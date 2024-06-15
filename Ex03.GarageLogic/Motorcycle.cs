@@ -32,8 +32,12 @@ namespace Ex03.GarageLogic
             m_MaxEngineTime = 2;
         }
 
-        float IElectricVehicle.m_RemainingEngineTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        float IElectricVehicle.m_MaxEngineTime { get => throw new NotImplementedException(); }
+        float IElectricVehicle.m_RemainingEngineTime 
+        { 
+            get { return m_RemainingEngineTime; }
+            set { m_RemainingEngineTime = value; }
+        }
+        float IElectricVehicle.m_MaxEngineTime => m_MaxEngineTime;
 
 
         public void Recharge(float minutes)

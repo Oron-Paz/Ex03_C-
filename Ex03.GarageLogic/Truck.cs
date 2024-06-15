@@ -35,8 +35,12 @@ namespace Ex03.GarageLogic
 
         }
 
-        float IFuelVehicle.m_RemainingFuelLiters { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        float IFuelVehicle.m_MaxAmountOfFuel { get => throw new NotImplementedException(); }
+        float IFuelVehicle.m_RemainingFuelLiters 
+        { 
+            get { return m_RemainingFuelLiters; }
+            set { m_RemainingFuelLiters = value; }
+        }
+        float IFuelVehicle.m_MaxAmountOfFuel => 120;
 
         FuelType IFuelVehicle.m_FuelType => throw new NotImplementedException();
 
