@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    internal class Garage
+    public class Garage
     {
         private List<Vehicle> vehicles;
 
@@ -17,7 +17,7 @@ namespace Ex03.GarageLogic
         }
 
         //returns the vehicle with the given license number
-        public void SearchVehicle(string i_LicenseNumber)
+        public Vehicle SearchVehicle(string i_LicenseNumber)
         {
             foreach (Vehicle vehicle in vehicles)
             {
@@ -26,6 +26,7 @@ namespace Ex03.GarageLogic
                     return vehicle;
                 }
             }
+            return null;
         }
         public void InsertVehicle(Vehicle vehicle)
         {

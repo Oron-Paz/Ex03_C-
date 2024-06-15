@@ -14,20 +14,20 @@ namespace Ex03.GarageLogic
         // Constructor
         public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, List<Wheel> i_wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus)
         {
-            m_color = carColor;
-            m_doors = numDoors;
+            m_color = i_carColor;
+            m_doors = i_numDoors;
 
-            wheels.add(new Wheel("Michelin", 31, 31));
-            wheels.add(new Wheel("Michelin", 31, 31));
-            wheels.add(new Wheel("Michelin", 31, 31));
-            wheels.add(new Wheel("Michelin", 31, 31));
+            i_wheels.Add(new Wheel("Michelin", 31, 31));
+            i_wheels.Add(new Wheel("Michelin", 31, 31));
+            i_wheels.Add(new Wheel("Michelin", 31, 31));
+            i_wheels.Add(new Wheel("Michelin", 31, 31));
         }
     }
 
-    public class ElectricCar : Car, IElectricVehicle
+    internal class ElectricCar : Car, IElectricVehicle
     {
         private float m_RemainingEngineTime;
-        private float m_MaxEngineTime;
+        private double m_MaxEngineTime;
 
         public ElectricCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingEngineTime) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
         {
@@ -35,6 +35,10 @@ namespace Ex03.GarageLogic
             m_MaxEngineTime = 3.5;
 
         }
+
+        public float RemainingEngineTime => throw new NotImplementedException();
+
+        public float MaxEngineTime => throw new NotImplementedException();
 
         public void Recharge(float hours)
         {
@@ -45,7 +49,7 @@ namespace Ex03.GarageLogic
         }
     }
 
-    public class FuelCar : Car, IFuelVehicle
+    internal class FuelCar : Car, IFuelVehicle
     {
         private FuelType m_FuelType;
         private float m_RemainingFuelLiters;
@@ -58,7 +62,11 @@ namespace Ex03.GarageLogic
             m_MaxAmountOfFuel = 45;
         }
 
-        public void Refuel(float i_Amount, FuelType i_FuelType)
+        public FuelType FuelType => throw new NotImplementedException();
+
+        public float RemainingFuelLiters => throw new NotImplementedException();
+
+        public void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
         {
             if (m_RemainingFuelLiters + i_Amount <= m_MaxAmountOfFuel)
             {

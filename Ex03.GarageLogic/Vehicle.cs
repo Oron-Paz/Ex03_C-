@@ -18,14 +18,14 @@ namespace Ex03.GarageLogic
     {
         FuelType FuelType { get; }
         float RemainingFuelLiters { get; }
-        void Refuel(float i_Amount, FuelType i_FuelType);
+        void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType);
     }
     /// <summary>
     ///  every vehicle contains the following properties:
     ///  Model Name(String),License Number(String),Remaining Energy Percentage(Fuel/Battery) (float),Wheels, with each wheel containing the following:
     /// </summary>
 
-    internal class Vehicle
+    public class Vehicle
     {
         private string m_ModelName;
         private string m_LicenseNumber;

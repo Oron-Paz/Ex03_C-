@@ -1,0 +1,2 @@
+C:\Users\oronp\source\repos\Ex03_Oron\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.csproj.AssemblyReference.cache
+C:\Users\oronp\source\repos\Ex03_Oron\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.csproj.CoreCompileInputs.cache
