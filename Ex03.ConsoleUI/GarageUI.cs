@@ -114,7 +114,7 @@ public class GarageUI
         {
             // Create a new FuelCar
             Console.WriteLine("What is the color of the car?");
-            string color = Console.ReadLine();
+            string color = Console.ReadLine().ToLower();
             CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
             if (carColor != CarColor.Red && carColor != CarColor.White && carColor != CarColor.Yellow && carColor != CarColor.Gray)
             {
@@ -141,8 +141,8 @@ public class GarageUI
         {
             // Create a new ElectricCar
             Console.WriteLine("What is the color of the car?");
-            string color = Console.ReadLine();
-            CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
+            string color = Console.ReadLine().ToLower();
+            CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), carColor);
             if (carColor != CarColor.Red && carColor != CarColor.White && carColor != CarColor.Yellow && carColor != CarColor.Gray)
             {
                 throw new ArgumentException("\nInvalid car color.");
@@ -168,7 +168,7 @@ public class GarageUI
             // Create a new FuelMotorcycle
             Console.WriteLine("What is the license type of the motorcycle?");
             LicenseType licenseType = (LicenseType)Enum.Parse(typeof(LicenseType), Console.ReadLine());
-            if(licenseType != LicenseType.A && licenseType != LicenseType.A1 && licenseType != LicenseType.AA && licenseType != LicenseType.B1)
+            if(licenseType != LicenseType.A && licenseType != LicenseType.A1 && licenseType != LicenseType.A2 && licenseType != LicenseType.B)
             {
                 throw new ArgumentException("\nInvalid license type.");
             }
@@ -189,7 +189,7 @@ public class GarageUI
             // Create a new ElectricMotorcycle
             Console.WriteLine("What is the license type of the motorcycle?");
             LicenseType licenseType = (LicenseType)Enum.Parse(typeof(LicenseType), Console.ReadLine());
-            if(licenseType != LicenseType.A && licenseType != LicenseType.A1 && licenseType != LicenseType.AA && licenseType != LicenseType.B1)
+            if(licenseType != LicenseType.A && licenseType != LicenseType.A1 && licenseType != LicenseType.A2 && licenseType != LicenseType.B)
             {
                 throw new ArgumentException("\nInvalid license type.");
             }
@@ -396,9 +396,9 @@ public class GarageUI
         }
         
         Console.WriteLine("Vehicle Wheels:");
-        Console.WriteLine($"Wheel Manufacturer: {vehicle.m_Wheels[0].m_Manufacture}");
-        Console.WriteLine($"Wheel Current Pressure: {vehicle.m_Wheels[0].m_CurrentPressure}");
-        Console.WriteLine($"Wheel Maximum Air Pressure: {vehicle.m_Wheels[0].m_MaxAirRecomended}");
+        Console.WriteLine($"Wheel Manufacturer: {wheel.m_Manufacturer}");
+        Console.WriteLine($"Wheel Current Pressure: {wheel.m_CurrentPressure}");
+        Console.WriteLine($"Wheel Maximum Air Pressure: {wheel.m_MaxAirRecomended}");
 
         Console.WriteLine("Vehicle Specific Information:");
         if(vehicle is Car)
