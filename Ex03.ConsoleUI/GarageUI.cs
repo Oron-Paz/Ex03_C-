@@ -186,7 +186,7 @@ public class GarageUI
             VehicleStatus status = (VehicleStatus)Enum.Parse(typeof(VehicleStatus), Console.ReadLine());
             foreach (Vehicle vehicle in garage.vehicles)
             {
-                if(vehicle.Status == status)
+                if(vehicle.m_Status == status)
                 {
                     Console.WriteLine("\n" + vehicle.LicenseNumber);
                 }
@@ -215,7 +215,7 @@ public class GarageUI
         Console.WriteLine("[2] Repaired");
         Console.WriteLine("[3] Paid");
         VehicleStatus status = (VehicleStatus)Enum.Parse(typeof(VehicleStatus), Console.ReadLine());
-        vehicle.Status = status;
+        vehicle.m_Status = status;
         Console.WriteLine("Vehicle status updated.");
     }
 
@@ -230,9 +230,9 @@ public class GarageUI
             Console.WriteLine("Vehicle not found.");
             return;
         }
-        foreach (Wheel wheel in vehicle.Wheels)
+        foreach (Wheel wheel in vehicle.m_Wheels)
         {
-            wheel.CurrentAirPressure = wheel.MaxAirPressure;
+            wheel.m_CurrentAirPressure = wheel.m_MaxAirPressure;
         }
         Console.WriteLine("Tires inflated to maximum.\n");
     }
@@ -248,26 +248,29 @@ public class GarageUI
             Console.WriteLine("Vehicle not found.");
             return;
         }
-        if(vehicle is !IFuelVehicle)
+        if(vehicle is IFuelVehicle)
+        {
+            Console.WriteLine("Please enter the fuel type:");
+            Console.WriteLine("[1] Octane95");
+            Console.WriteLine("[2] Octane96");
+            Console.WriteLine("[3] Octane98");
+            Console.WriteLine("[4] Soler");
+            FuelType fuelType = (FuelType)Enum.Parse(typeof(FuelType), Console.ReadLine());
+            if(fuelType != ((IFuelVehicle)vehicle).FuelType)
+            {
+                Console.WriteLine("Invalid fuel type.");
+                return;
+            }
+            Console.WriteLine("Please enter the amount of fuel to refuel:");
+            float amount = float.Parse(Console.ReadLine());
+            vehicle.Refuel(vehicle.RemainingFuelLiters, vehicle.MaxAmountOfFuel, amount, fuelType);
+            return;
+        }
+        else
         {
             Console.WriteLine("Vehicle is not a fuel vehicle.");
             return;
         }
-        Console.WriteLine("Please enter the fuel type:");
-        Console.WriteLine("[1] Octane95");
-        Console.WriteLine("[2] Octane96");
-        Console.WriteLine("[3] Octane98");
-        Console.WriteLine("[4] Soler");
-        FuelType fuelType = (FuelType)Enum.Parse(typeof(FuelType), Console.ReadLine());
-        if(fuelType != ((IFuelVehicle)vehicle).FuelType)
-        {
-            Console.WriteLine("Invalid fuel type.");
-            return;
-        }
-        Console.WriteLine("Please enter the amount of fuel to refuel:");
-        float amount = float.Parse(Console.ReadLine());
-        vehicle.Refuel(vehicle.RemainingFuelLiters, vehicle.MaxAmountOfFuel, amount, fuelType);
-        return;
     }
 
     private static void ChargeVehicle()
@@ -281,15 +284,18 @@ public class GarageUI
             Console.WriteLine("Vehicle not found.");
             return;
         }
-        if(vehicle is !IElectricVehicle)
+        if(vehicle is IElectricVehicle)
+        {
+            Console.WriteLine("Please enter the amount of minutes to charge:");
+            float minutes = float.Parse(Console.ReadLine());
+            vehicle.Recharge(minutes);
+            return;
+        }
+        else
         {
             Console.WriteLine("Vehicle is not an electric vehicle.");
             return;
         }
-        Console.WriteLine("Please enter the amount of minutes to charge:");
-        float minutes = float.Parse(Console.ReadLine());
-        vehicle.Recharge(minutes);
-        return;
     }
 
     private static void DisplayVehicleInfo()
