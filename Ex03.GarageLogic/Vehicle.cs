@@ -22,9 +22,9 @@ namespace Ex03.GarageLogic
 
         float m_RemainingFuelLiters { get; set; }
 
-        FuelType m_FuelType { get; set; }
+        FuelType m_FuelType { get; }
 
-        float m_MaxAmountOfFuel { get; set; }
+        float m_MaxAmountOfFuel { get; }
     }
     /// <summary>
     ///  every vehicle contains the following properties:

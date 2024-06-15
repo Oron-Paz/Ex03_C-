@@ -47,20 +47,16 @@ namespace Ex03.GarageLogic
 
     public class FuelMotorcycle : Motorcycle, IFuelVehicle
     {
-        private FuelType m_FuelType;
-        private float m_RemainingFuelLiters;
-        private float m_MaxAmountOfFuel;
+       
 
         public FuelMotorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
         {
-            m_FuelType = FuelType.Octane98;
-            m_RemainingFuelLiters = remainingFuelLiters;
-            m_MaxAmountOfFuel = 55;
+            IFuelVehicle.m_RemainingFuelLiters = remainingFuelLiters;
         }
 
-        float IFuelVehicle.m_RemainingFuelLiters { get; set; }
-        float IFuelVehicle.m_MaxAmountOfFuel { get; set; }
-        FuelType IFuelVehicle.m_FuelType { get ; set ; }
+        float IFuelVehicle.m_RemainingFuelLiters { get; set; };
+        float IFuelVehicle.m_MaxAmountOfFuel { get;} = 55;
+        FuelType IFuelVehicle.m_FuelType { get; } = FuelType.Octane98;
 
         public void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
         {
