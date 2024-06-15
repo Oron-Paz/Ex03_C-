@@ -54,13 +54,13 @@ namespace Ex03.GarageLogic
 
     public class FuelCar : Car, IFuelVehicle
     {
-        private FuelType m_FuelType = FuelType.Octane95;
+        //private FuelType m_FuelType = FuelType.Octane95;
         private float m_RemainingFuelLiters;
         private float m_MaxAmountOfFuel = 45;
 
         public FuelCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
         {
-            m_FuelType = FuelType.Octane95;
+            //m_FuelType = FuelType.Octane95;
             m_RemainingFuelLiters = remainingFuelLiters;
             m_MaxAmountOfFuel = 45;
         }

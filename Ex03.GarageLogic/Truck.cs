@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
     {
         public bool m_CarryingHazardousMaterials;
         public float m_CargoVolume;
-        private FuelType m_FuelType;
+        //private FuelType m_FuelType;
         private float m_MaxAmountOfFuel;
         private float m_RemainingFuelLiters;
 
@@ -20,7 +20,7 @@ namespace Ex03.GarageLogic
         {
             m_CarryingHazardousMaterials = carryingHazardousMaterials;
             m_CargoVolume = cargoVolume;
-            m_FuelType = FuelType.Soler;
+            //m_FuelType = FuelType.Soler;
             m_RemainingFuelLiters = i_RemainingFuelLiters;
             m_MaxAmountOfFuel = 120;
 
