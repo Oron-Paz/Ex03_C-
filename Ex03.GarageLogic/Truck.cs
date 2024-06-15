@@ -42,7 +42,7 @@ namespace Ex03.GarageLogic
         }
         float IFuelVehicle.m_MaxAmountOfFuel => 120;
 
-        FuelType IFuelVehicle.m_FuelType => throw new NotImplementedException();
+        FuelType IFuelVehicle.m_FuelType => FuelType.Soler;
 
         public void Refuel(float remainingEnergy, float maxAmountOfFuel , float i_Amount, FuelType i_FuelType)
         {
