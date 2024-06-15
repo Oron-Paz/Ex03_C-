@@ -256,14 +256,14 @@ public class GarageUI
             Console.WriteLine("[3] Octane98");
             Console.WriteLine("[4] Soler");
             FuelType fuelType = (FuelType)Enum.Parse(typeof(FuelType), Console.ReadLine());
-            if(fuelType != ((IFuelVehicle)vehicle).FuelType)
+            if(fuelType != ((IFuelVehicle)vehicle).m_FuelType)
             {
                 Console.WriteLine("Invalid fuel type.");
                 return;
             }
             Console.WriteLine("Please enter the amount of fuel to refuel:");
             float amount = float.Parse(Console.ReadLine());
-            ((IFuelVehicle)vehicle).Refuel(((IFuelVehicle)vehicle).RemainingFuelLiters, ((IFuelVehicle)vehicle).MaxAmountOfFuel, amount, fuelType);
+            ((IFuelVehicle)vehicle).Refuel(((IFuelVehicle)vehicle).m_RemainingFuelLiters, ((IFuelVehicle)vehicle).m_MaxAmountOfFuel, amount, fuelType);
             return;
         }
         else
