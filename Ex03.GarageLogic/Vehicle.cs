@@ -10,11 +10,19 @@ namespace Ex03.GarageLogic
 
     public interface IElectricVehicle
     {
+        public float m_RemainingEngineTime { get; set; }
+        public float m_MaxEngineTime { get; set; }
         void Recharge(float minutes);
     }
     public interface IFuelVehicle
     {
+        //remaining fuel
+
         void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType);
+
+        public m_RemainingFuelLiters { get; set; }
+
+        public m_MaxAmountOfFuel { get; set; }
     }
     /// <summary>
     ///  every vehicle contains the following properties:
