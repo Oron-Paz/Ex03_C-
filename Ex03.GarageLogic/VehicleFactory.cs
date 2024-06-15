@@ -22,11 +22,7 @@ namespace Ex03.GarageLogic
 
         // Private methods to create specific types of vehicles
         public static FuelCar CreateFuelCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, CarColor color, int doors)
-        {
-            // Example logic to create a FuelCar object
-            // You need to implement the logic to create a FuelCar object
-            //calucatle remianing fuel liters
-            //public FuelCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingFuelLiters)
+        {  
 
             return new FuelCar(modelName, licenseNumber, remainingEnergy, wheels, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, color, doors, 0);
         }
@@ -37,31 +33,19 @@ namespace Ex03.GarageLogic
             return new ElectricCar(modelName, licenseNumber, remainingEnergy, wheels, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, color, doors, 0);
         }
 
-        public static FuelMotorcycle CreateFuelMotorcycle(string licenseNumber)
+        public static FuelMotorcycle CreateFuelMotorcycle(string licenseNumber, string modelName, float remainingEnergy, List<Wheel> wheels, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters)
         {
-            // Example logic to create a FuelMotorcycle object
-            // You need to implement the logic to create a FuelMotorcycle object
-            //return new FuelMotorcycle(/* parameters for initialization */);
-            return null;
-
+            return new FuelMotorcycle(modelName, licenseNumber, remainingEnergy, wheels, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, licenseType, engineVolume, remainingFuelLiters);
         }
 
-        public static ElectricMotorcycle CreateElectricMotorcycle(string licenseNumber)
+        public static ElectricMotorcycle CreateElectricMotorcycle(string licenseNumber, string modelName, float remainingEnergy, List<Wheel> wheels, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingEngineTime)
         {
-            // Example logic to create an ElectricMotorcycle object
-            // You need to implement the logic to create an ElectricMotorcycle object
-            //return new ElectricMotorcycle(/* parameters for initialization */);
-            return null;
-
+            return new ElectricMotorcycle(modelName, licenseNumber, remainingEnergy, wheels, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, licenseType, engineVolume, remainingEngineTime);
         }
 
-        public static Truck CreateTruck(string licenseNumber)
+        public static Truck CreateTruck(string licenseNumber, string modelName, float remainingEnergy, List<Wheel> wheels, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, bool isCarryingDangerousMaterials, float cargoVolume)
         {
-            // Example logic to create a Truck object
-            // You need to implement the logic to create a Truck object
-            //return new Truck(/* parameters for initialization */);
-            return null;
-
+            return new Truck(modelName, licenseNumber, remainingEnergy, wheels, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, isCarryingDangerousMaterials, cargoVolume);
         }
     }
 }

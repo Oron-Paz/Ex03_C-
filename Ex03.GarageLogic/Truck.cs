@@ -13,12 +13,15 @@ namespace Ex03.GarageLogic
         private float m_CargoVolume;
         private FuelType m_FuelType;
         private float m_maxAmountOfFuel;
+        private float m_remainingFuelLiters
 
-        public Truck(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
+
+        public Truck(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume, float currentFuelInLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
         {
             m_CarryingHazardousMaterials = carryingHazardousMaterials;
             m_CargoVolume = cargoVolume;
             m_FuelType = FuelType.Soler;
+            m_remainingFuelLiters = currentFuelInLiters;
             m_maxAmountOfFuel = 120;
 
             wheels.Add(new Wheel("Michelin", 28, 28));

@@ -120,14 +120,39 @@ public class GarageUI
         else if (option == "3")
         {
             // Create a new FuelMotorcycle
+            Console.WriteLine("What is the license type of the motorcycle?");
+            LicenseType licenseType = (LicenseType)Enum.Parse(typeof(LicenseType), Console.ReadLine());
+            Console.WriteLine("What is the engine volume of the motorcycle?");
+            int engineVolume = int.Parse(Console.ReadLine());
+            Console.WriteLine("What is the remaining fuel liters of the motorcycle?");
+            float remainingFuelLiters = float.Parse(Console.ReadLine());
+            garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume, remainingFuelLiters));
+            Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
+            return;
         }
         else if (option == "4")
         {
             // Create a new ElectricMotorcycle
+            Console.WriteLine("What is the license type of the motorcycle?");
+            LicenseType licenseType = (LicenseType)Enum.Parse(typeof(LicenseType), Console.ReadLine());
+            Console.WriteLine("What is the engine volume of the motorcycle?");
+            int engineVolume = int.Parse(Console.ReadLine());
+            Console.WriteLine("What is the remaining engine time of the motorcycle?");
+            float remainingEngineTime = float.Parse(Console.ReadLine());
+            garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume, remainingEngineTime));
+            Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
+            return;
         }
         else if (option == "5")
         {
             // Create a new Truck
+            Console.WriteLine("Is the truck carrying dangerous materials? (yes/no)");
+            bool isCarryingDangerousMaterials = Console.ReadLine().ToLower() == "yes";
+            Console.WriteLine("What is the cargo volume of the truck?");
+            float cargoVolume = float.Parse(Console.ReadLine());
+            Console.WriteLine("What is the remaining fuel liters of the truck?");
+            float remainingFuelLiters = float.Parse(Console.ReadLine());
+            garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume, remainingFuelLiters));
         }
         else
         {
@@ -138,31 +163,145 @@ public class GarageUI
     private static void DisplayVehicleLicenseNumbers()
     {
         // Implementation for displaying vehicle license numbers
+        Console.WriteLine("Please select a filter:");
+        Console.WriteLine("[1] Display all vehicles");
+        Console.WriteLine("[2] Display vehicles by status");
+
+        string option = Console.ReadLine();
+        if(option == "1")
+        {
+            foreach (Vehicle vehicle in garage.vehicles)
+            {
+                Console.WriteLine("\n" + vehicle.LicenseNumber);
+            }
+        }
+        else if(option == "2")
+        {
+            Console.WriteLine("Please select a status:");
+            Console.WriteLine("[1] InRepair");
+            Console.WriteLine("[2] Fixed");
+            Console.WriteLine("[3] Paid");
+            VehicleStatus status = (VehicleStatus)Enum.Parse(typeof(VehicleStatus), Console.ReadLine());
+            foreach (Vehicle vehicle in garage.vehicles)
+            {
+                if(vehicle.Status == status)
+                {
+                    Console.WriteLine("\n" + vehicle.LicenseNumber);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid option, try again.");
+        }
+
     }
 
     private static void ChangeVehicleStatus()
     {
         // Implementation for changing vehicle status
+        Console.WriteLine("Please enter the license number of the vehicle:");
+        string licenseNumber = Console.ReadLine();
+        Vehicle vehicle = garage.SearchVehicle(licenseNumber);
+        if (vehicle == null)
+        {
+            Console.WriteLine("Vehicle not found.");
+            return;
+        }
+        Console.WriteLine("Please enter the new status of the vehicle:");
+        Console.WriteLine("[1] InRepair");
+        Console.WriteLine("[2] Repaired");
+        Console.WriteLine("[3] Paid");
+        VehicleStatus status = (VehicleStatus)Enum.Parse(typeof(VehicleStatus), Console.ReadLine());
+        vehicle.Status = status;
+        Console.WriteLine("Vehicle status updated.");
     }
 
     private static void InflateTiresToMax()
     {
         // Implementation for inflating tires to max
+        Console.WriteLine("Please enter the license number of the vehicle:");
+        string licenseNumber = Console.ReadLine();
+        Vehicle vehicle = garage.SearchVehicle(licenseNumber);
+        if (vehicle == null)
+        {
+            Console.WriteLine("Vehicle not found.");
+            return;
+        }
+        foreach (Wheel wheel in vehicle.Wheels)
+        {
+            wheel.CurrentAirPressure = wheel.MaxAirPressure;
+        }
+        Console.WriteLine("Tires inflated to maximum.\n");
     }
 
     private static void RefuelVehicle()
     {
         // Implementation for refueling a vehicle
+        Console.WriteLine("Please enter the license number of the vehicle:");
+        string licenseNumber = Console.ReadLine();
+        Vehicle vehicle = garage.SearchVehicle(licenseNumber);
+        if (vehicle == null)
+        {
+            Console.WriteLine("Vehicle not found.");
+            return;
+        }
+        if(vehicle is !IFuelVehicle)
+        {
+            Console.WriteLine("Vehicle is not a fuel vehicle.");
+            return;
+        }
+        Console.WriteLine("Please enter the fuel type:");
+        Console.WriteLine("[1] Octane95");
+        Console.WriteLine("[2] Octane96");
+        Console.WriteLine("[3] Octane98");
+        Console.WriteLine("[4] Soler");
+        FuelType fuelType = (FuelType)Enum.Parse(typeof(FuelType), Console.ReadLine());
+        if(fuelType != ((IFuelVehicle)vehicle).FuelType)
+        {
+            Console.WriteLine("Invalid fuel type.");
+            return;
+        }
+        Console.WriteLine("Please enter the amount of fuel to refuel:");
+        float amount = float.Parse(Console.ReadLine());
+        vehicle.Refuel(vehicle.RemainingFuelLiters, vehicle.MaxAmountOfFuel, amount, fuelType);
+        return;
     }
 
     private static void ChargeVehicle()
     {
         // Implementation for charging a vehicle
+        Console.WriteLine("Please enter the license number of the vehicle:");
+        string licenseNumber = Console.ReadLine();
+        Vehicle vehicle = garage.SearchVehicle(licenseNumber);
+        if (vehicle == null)
+        {
+            Console.WriteLine("Vehicle not found.");
+            return;
+        }
+        if(vehicle is !IElectricVehicle)
+        {
+            Console.WriteLine("Vehicle is not an electric vehicle.");
+            return;
+        }
+        Console.WriteLine("Please enter the amount of minutes to charge:");
+        float minutes = float.Parse(Console.ReadLine());
+        vehicle.Recharge(minutes);
+        return;
     }
 
     private static void DisplayVehicleInfo()
     {
         // Implementation for displaying vehicle information
+        Console.WriteLine("Please enter the license number of the vehicle:");
+        string licenseNumber = Console.ReadLine();
+        Vehicle vehicle = garage.SearchVehicle(licenseNumber);
+        if (vehicle == null)
+        {
+            Console.WriteLine("Vehicle not found.");
+            return;
+        }
+        Console.WriteLine(vehicle.ToString());
     }
 
 }

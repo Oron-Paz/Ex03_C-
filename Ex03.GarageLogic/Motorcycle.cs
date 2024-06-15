@@ -51,11 +51,11 @@ namespace Ex03.GarageLogic
         private float m_RemainingFuelLiters;
         private float m_MaxAmountOfFuel;
 
-        public FuelMotorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters, float maxAmountOfFuel) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
+        public FuelMotorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
         {
             m_FuelType = FuelType.Octane98;
             m_RemainingFuelLiters = remainingFuelLiters;
-            m_MaxAmountOfFuel = maxAmountOfFuel;
+            m_MaxAmountOfFuel = 5.5;
         }
 
         public FuelType FuelType => throw new NotImplementedException();
