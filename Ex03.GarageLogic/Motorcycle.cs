@@ -32,10 +32,6 @@ namespace Ex03.GarageLogic
             m_MaxEngineTime = 2;
         }
 
-        public float RemainingEngineTime => throw new NotImplementedException();
-
-        public float MaxEngineTime => throw new NotImplementedException();
-
         public void Recharge(float hours)
         {
             if (m_RemainingEngineTime + hours <= m_MaxEngineTime)
@@ -57,10 +53,6 @@ namespace Ex03.GarageLogic
             m_RemainingFuelLiters = remainingFuelLiters;
             m_MaxAmountOfFuel = 5.5;
         }
-
-        public FuelType FuelType => throw new NotImplementedException();
-
-        public float RemainingFuelLiters => throw new NotImplementedException();
 
         public void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
         {
