@@ -31,12 +31,10 @@ namespace Ex03.GarageLogic
             return new FuelCar(modelName, licenseNumber, remainingEnergy, wheels, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, color, doors, 0);
         }
 
-        public static ElectricCar CreateElectricCar(string licenseNumber)
+        public static ElectricCar CreateElectricCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, CarColor color, int doors)
         {
-            // Example logic to create an ElectricCar object
-            // You need to implement the logic to create an ElectricCar object
-            //return new ElectricCar(/* parameters for initialization */);
-            return null;
+            
+            return new ElectricCar(modelName, licenseNumber, remainingEnergy, wheels, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, color, doors, 0);
         }
 
         public static FuelMotorcycle CreateFuelMotorcycle(string licenseNumber)
