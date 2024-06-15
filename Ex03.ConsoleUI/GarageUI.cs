@@ -232,7 +232,7 @@ public class GarageUI
         }
         foreach (Wheel wheel in vehicle.m_Wheels)
         {
-            wheel.m_CurrentAirPressure = wheel.m_MaxAirPressure;
+            wheel.m_CurrentPressure = wheel.m_MaxAirRecomended;
         }
         Console.WriteLine("Tires inflated to maximum.\n");
     }
