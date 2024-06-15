@@ -60,8 +60,7 @@ namespace Ex03.GarageLogic
 
         float IFuelVehicle.m_RemainingFuelLiters { get; set; }
         float IFuelVehicle.m_MaxAmountOfFuel { get; set; }
-
-        //float IFuelVehicle.m_FuelType { get; set; }
+        FuelType IFuelVehicle.m_FuelType { get ; set ; }
 
         public void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
         {
