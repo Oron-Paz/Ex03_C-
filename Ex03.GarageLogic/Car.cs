@@ -36,11 +36,14 @@ namespace Ex03.GarageLogic
 
         }
 
+        float IElectricVehicle.m_RemainingEngineTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        float IElectricVehicle.m_MaxEngineTime { get => throw new NotImplementedException(); }
+
         public void Recharge(float minutes)
         {
-            if (m_RemainingEngineTime + hours <= m_MaxEngineTime)
+            if (m_RemainingEngineTime + minutes <= m_MaxEngineTime)
             {
-                m_RemainingEngineTime += hours;
+                m_RemainingEngineTime += minutes;
             }
         }
     }
@@ -57,6 +60,15 @@ namespace Ex03.GarageLogic
             m_RemainingFuelLiters = remainingFuelLiters;
             m_MaxAmountOfFuel = 45;
         }
+
+        float IFuelVehicle.m_RemainingFuelLiters
+        {
+            get { return  m_RemainingFuelLiters; }
+            set {  m_RemainingFuelLiters = value;}
+        }
+        float IFuelVehicle.m_MaxAmountOfFuel { get => throw new NotImplementedException(); }
+
+        FuelType IFuelVehicle.m_FuelType => throw new NotImplementedException();
 
         public void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
         {

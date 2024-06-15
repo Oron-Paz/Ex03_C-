@@ -13,15 +13,15 @@ namespace Ex03.GarageLogic
         private float m_CargoVolume;
         private FuelType m_FuelType;
         private float m_MaxAmountOfFuel;
-        private float m_RemainingFuelLiters
+        private float m_RemainingFuelLiters;
 
 
-        public Truck(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume, float currentFuelInLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
+        public Truck(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume, float i_RemainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
         {
             m_CarryingHazardousMaterials = carryingHazardousMaterials;
             m_CargoVolume = cargoVolume;
             m_FuelType = FuelType.Soler;
-            m_RemainingFuelLiters = currentFuelInLiters;
+            m_RemainingFuelLiters = i_RemainingFuelLiters;
             m_MaxAmountOfFuel = 120;
 
             wheels.Add(new Wheel("Michelin", 28, 28));
@@ -36,7 +36,9 @@ namespace Ex03.GarageLogic
         }
 
         float IFuelVehicle.m_RemainingFuelLiters { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        float IFuelVehicle.m_MaxAmountOfFuel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        float IFuelVehicle.m_MaxAmountOfFuel { get => throw new NotImplementedException(); }
+
+        FuelType IFuelVehicle.m_FuelType => throw new NotImplementedException();
 
         public void Refuel(float remainingEnergy, float maxAmountOfFuel , float i_Amount, FuelType i_FuelType)
         {

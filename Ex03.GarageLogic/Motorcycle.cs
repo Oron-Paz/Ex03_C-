@@ -26,15 +26,15 @@ namespace Ex03.GarageLogic
         private float m_RemainingEngineTime;
         private float m_MaxEngineTime;
 
-        public ElectricMotorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingEngineTime, float maxEngineTime) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
+        public ElectricMotorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingEngineTime) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
         {
             m_RemainingEngineTime = remainingEngineTime;
             m_MaxEngineTime = 2;
         }
 
         float IElectricVehicle.m_RemainingEngineTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        float IElectricVehicle.m_MaxEngineTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        
+        float IElectricVehicle.m_MaxEngineTime { get => throw new NotImplementedException(); }
+
 
         public void Recharge(float minutes)
         {
@@ -56,28 +56,29 @@ namespace Ex03.GarageLogic
             m_RemainingFuelLiters = remainingFuelLiters;
         }
 
-    float IFuelVehicle.m_RemainingFuelLiters
-    {
-        get { return m_RemainingFuelLiters; }
-        set { m_RemainingFuelLiters = value; }
-    }
-
-    float IFuelVehicle.m_MaxAmountOfFuel => m_MaxAmountOfFuel;
-    FuelType IFuelVehicle.m_FuelType => m_FuelType;
-
-    // Implementing the Refuel method
-    public void Refuel(float i_currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
-    {
-        if (i_FuelType != m_FuelType)
+        float IFuelVehicle.m_RemainingFuelLiters
         {
-            throw new ArgumentException($"Fuel type {i_FuelType} is not compatible with {m_FuelType}");
+            get { return m_RemainingFuelLiters; }
+            set { m_RemainingFuelLiters = value; }
         }
 
-        if (m_RemainingFuelLiters + i_Amount > m_MaxAmountOfFuel)
-        {
-            throw new ArgumentException($"Amount of fuel exceeds the tank capacity of {m_MaxAmountOfFuel} liters.");
-        }
+        float IFuelVehicle.m_MaxAmountOfFuel => m_MaxAmountOfFuel;
+        FuelType IFuelVehicle.m_FuelType => m_FuelType;
 
-        m_RemainingFuelLiters += i_Amount;
+        // Implementing the Refuel method
+        public void Refuel(float i_currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
+        {
+            if (i_FuelType != m_FuelType)
+            {
+                throw new ArgumentException($"Fuel type {i_FuelType} is not compatible with {m_FuelType}");
+            }
+
+            if (m_RemainingFuelLiters + i_Amount > m_MaxAmountOfFuel)
+            {
+                throw new ArgumentException($"Amount of fuel exceeds the tank capacity of {m_MaxAmountOfFuel} liters.");
+            }
+
+            m_RemainingFuelLiters += i_Amount;
+        }
     }
 }
