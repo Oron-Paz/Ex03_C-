@@ -33,9 +33,9 @@ namespace Ex03.GarageLogic
 
     public class Vehicle
     {
-        private string m_ModelName;
-        private string m_LicenseNumber;
-        private float m_RemainingEnergy;
+        public string m_ModelName;
+        public string m_LicenseNumber;
+        public float m_RemainingEnergy;
         public List<Wheel> m_Wheels { get; set; }
         public string m_OwnerName { get; set; }
         public string m_OwnerPhoneNumber { get; set; }

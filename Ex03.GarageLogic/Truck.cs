@@ -9,8 +9,8 @@ namespace Ex03.GarageLogic
 {
     public class Truck : Vehicle, IFuelVehicle
     {
-        private bool m_CarryingHazardousMaterials;
-        private float m_CargoVolume;
+        public bool m_CarryingHazardousMaterials;
+        public float m_CargoVolume;
         private FuelType m_FuelType;
         private float m_MaxAmountOfFuel;
         private float m_RemainingFuelLiters;
