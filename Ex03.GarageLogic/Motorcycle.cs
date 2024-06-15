@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    internal class Motorcycle : Vehicle
+    public class Motorcycle : Vehicle
     {
         private static string modelName;
         private static string licenseNumber;
@@ -26,7 +26,7 @@ namespace Ex03.GarageLogic
         }
     }
 
-    internal class ElectricMotorcycle : Motorcycle, IElectricVehicle
+    public class ElectricMotorcycle : Motorcycle, IElectricVehicle
     {
         private float m_RemainingEngineTime;
         private float m_MaxEngineTime;
@@ -50,7 +50,7 @@ namespace Ex03.GarageLogic
         }
     }
 
-    internal class FuelMotorcycle : Motorcycle, IFuelVehicle
+    public class FuelMotorcycle : Motorcycle, IFuelVehicle
     {
         private FuelType m_FuelType;
         private float m_RemainingFuelLiters;

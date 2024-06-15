@@ -8,7 +8,7 @@ namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        private List<Vehicle> vehicles;
+        public List<Vehicle> vehicles;
 
         //initializes a new instance of the Garage class that is empty
         public Garage()
@@ -21,10 +21,11 @@ namespace Ex03.GarageLogic
         {
             foreach (Vehicle vehicle in vehicles)
             {
-                if (vehicle.LicenseNumber == i_LicenseNumber)
-                {
-                    return vehicle;
-                }
+                Console.WriteLine(vehicle.LicenseNumber);
+                //if (vehicle.LicenseNumber.Equals(i_LicenseNumber))
+                //{
+                  //  return vehicle;
+                //}
             }
             return null;
         }

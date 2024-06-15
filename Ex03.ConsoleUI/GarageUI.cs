@@ -9,7 +9,7 @@ using Ex03.GarageLogic;
 
 public class GarageUI
 {
-    Ex03.GarageLogic.Garage garage = new Ex03.GarageLogic.Garage();
+    private static Garage garage = new Garage();
     public static void Main(string[] args)
     {
        
@@ -98,7 +98,7 @@ public class GarageUI
             CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
             Console.WriteLine("How many doors does the car have?");
             int doors = int.Parse(Console.ReadLine());
-            garage.add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors));
+            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors));
             return;
 
         }

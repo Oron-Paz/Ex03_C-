@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    internal class Truck : Vehicle, IFuelVehicle
+    public class Truck : Vehicle, IFuelVehicle
     {
         private static string modelName;
         private static string licenseNumber;

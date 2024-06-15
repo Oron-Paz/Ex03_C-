@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    internal class Car : Vehicle
+    public class Car : Vehicle
     {
+        private static string modelName;
+        private static string licenseNumber;
+        private static float remainingEnergy;
+        private static string ownerName;
+        private static string ownerPhoneNumber;
         private CarColor m_color;
         private int m_doors;
 
         // Constructor
-        public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, List<Wheel> i_wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus)
+        public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, List<Wheel> i_wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
         {
             m_color = i_carColor;
             m_doors = i_numDoors;
@@ -24,7 +29,7 @@ namespace Ex03.GarageLogic
         }
     }
 
-    internal class ElectricCar : Car, IElectricVehicle
+    public class ElectricCar : Car, IElectricVehicle
     {
         private float m_RemainingEngineTime;
         private double m_MaxEngineTime;
@@ -49,7 +54,7 @@ namespace Ex03.GarageLogic
         }
     }
 
-    internal class FuelCar : Car, IFuelVehicle
+    public class FuelCar : Car, IFuelVehicle
     {
         private FuelType m_FuelType;
         private float m_RemainingFuelLiters;

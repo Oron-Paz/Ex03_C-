@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    internal class VehicleFactory
+    public class VehicleFactory
     {
         // Supported vehicle types enumeration
         public enum VehicleType
@@ -21,7 +21,7 @@ namespace Ex03.GarageLogic
         // Method to create a vehicle based on the specified type
 
         // Private methods to create specific types of vehicles
-        private static FuelCar CreateFuelCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, carColor color, int doors)
+        public static FuelCar CreateFuelCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, CarColor color, int doors)
         {
             // Example logic to create a FuelCar object
             // You need to implement the logic to create a FuelCar object
@@ -31,7 +31,7 @@ namespace Ex03.GarageLogic
             return new FuelCar(modelName, licenseNumber, remainingEnergy, wheels, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, color, doors, 0);
         }
 
-        private static ElectricCar CreateElectricCar(string licenseNumber)
+        public static ElectricCar CreateElectricCar(string licenseNumber)
         {
             // Example logic to create an ElectricCar object
             // You need to implement the logic to create an ElectricCar object
@@ -39,7 +39,7 @@ namespace Ex03.GarageLogic
             return null;
         }
 
-        private static FuelMotorcycle CreateFuelMotorcycle(string licenseNumber)
+        public static FuelMotorcycle CreateFuelMotorcycle(string licenseNumber)
         {
             // Example logic to create a FuelMotorcycle object
             // You need to implement the logic to create a FuelMotorcycle object
@@ -48,7 +48,7 @@ namespace Ex03.GarageLogic
 
         }
 
-        private static ElectricMotorcycle CreateElectricMotorcycle(string licenseNumber)
+        public static ElectricMotorcycle CreateElectricMotorcycle(string licenseNumber)
         {
             // Example logic to create an ElectricMotorcycle object
             // You need to implement the logic to create an ElectricMotorcycle object
@@ -57,7 +57,7 @@ namespace Ex03.GarageLogic
 
         }
 
-        private static Truck CreateTruck(string licenseNumber)
+        public static Truck CreateTruck(string licenseNumber)
         {
             // Example logic to create a Truck object
             // You need to implement the logic to create a Truck object
