@@ -29,21 +29,5 @@ namespace Ex03.GarageLogic
             }
             return null;
         }
-        public void InsertVehicle(Vehicle vehicle)
-        {
-
-        }
-
-
-        public void RemoveVehicle(Vehicle vehicle)
-        {
-            vehicles.Remove(vehicle);
-            // You can add additional logic here, such as removing the vehicle from a database or performing cleanup operations.
-        }
-
-        public List<Vehicle> GetVehicles()
-        {
-            return vehicles;
-        }
     }
 }
