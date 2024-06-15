@@ -98,7 +98,9 @@ public class GarageUI
             CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
             Console.WriteLine("How many doors does the car have?");
             int doors = int.Parse(Console.ReadLine());
-            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors));
+            Console.WriteLine("What is the remaining fuel liters of the car?");
+            float remainingFuelLiters = float.Parse(Console.ReadLine());
+            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingFuelLiters));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
             return;
 
