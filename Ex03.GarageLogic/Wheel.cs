@@ -22,7 +22,7 @@ namespace Ex03.GarageLogic
         {
             get { return m_MaxAirRecomended; }
         }
-        public Wheel(string i_manufacture, float i_maxAirRecomended, float i_currentpreasure)
+        public Wheel(string i_manufacture, float i_maxAirRecomended, float i_currentPressure)
         {
             m_Manufacture = i_manufacture;
             m_MaxAirRecomended = i_maxAirRecomended;
