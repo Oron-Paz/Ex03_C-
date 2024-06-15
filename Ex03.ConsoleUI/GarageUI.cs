@@ -396,9 +396,10 @@ public class GarageUI
         }
         
         Console.WriteLine("Vehicle Wheels:");
-        Console.WriteLine($"Wheel Manufacturer: {vehicle.m_Wheels[0].m_Manufacture}");
-        Console.WriteLine($"Wheel Current Pressure: {vehicle.m_Wheels[0].m_CurrentPressure}");
-        Console.WriteLine($"Wheel Maximum Air Pressure: {vehicle.m_Wheels[0].m_MaxAirRecomended}");
+        Console.WriteLine($"Number of wheels = {vehicle.m_Wheels.Count}");
+        //Console.WriteLine($"Wheel Manufacturer: {vehicle.m_Wheels[1].m_Manufacture}");
+        //Console.WriteLine($"Wheel Current Pressure: {vehicle.m_Wheels[1].m_CurrentPressure}");
+        //Console.WriteLine($"Wheel Maximum Air Pressure: {vehicle.m_Wheels[1].m_MaxAirRecomended}");
 
         Console.WriteLine("Vehicle Specific Information:");
         if(vehicle is Car)
