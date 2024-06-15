@@ -27,17 +27,21 @@ namespace Ex03.GarageLogic
     public class ElectricCar : Car, IElectricVehicle
     {
         private float m_RemainingEngineTime;
-        private double m_MaxEngineTime;
+        private float m_MaxEngineTime;
 
         public ElectricCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingEngineTime) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
         {
             m_RemainingEngineTime = remainingEngineTime;
-            m_MaxEngineTime = 3.5;
+            m_MaxEngineTime = 35;
 
         }
 
-        float IElectricVehicle.m_RemainingEngineTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        float IElectricVehicle.m_MaxEngineTime { get => throw new NotImplementedException(); }
+        float IElectricVehicle.m_RemainingEngineTime 
+        {
+            get { return  m_RemainingEngineTime; }
+            set {  m_RemainingEngineTime = value;}
+        }
+        float IElectricVehicle.m_MaxEngineTime => 35;
 
         public void Recharge(float minutes)
         {
@@ -50,9 +54,9 @@ namespace Ex03.GarageLogic
 
     public class FuelCar : Car, IFuelVehicle
     {
-        private FuelType m_FuelType;
+        private FuelType m_FuelType = FuelType.Octane95;
         private float m_RemainingFuelLiters;
-        private float m_MaxAmountOfFuel;
+        private float m_MaxAmountOfFuel = 45;
 
         public FuelCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
         {
@@ -66,9 +70,9 @@ namespace Ex03.GarageLogic
             get { return  m_RemainingFuelLiters; }
             set {  m_RemainingFuelLiters = value;}
         }
-        float IFuelVehicle.m_MaxAmountOfFuel { get => throw new NotImplementedException(); }
+        float IFuelVehicle.m_MaxAmountOfFuel => 45;
 
-        FuelType IFuelVehicle.m_FuelType => throw new NotImplementedException();
+        FuelType IFuelVehicle.m_FuelType => FuelType.Octane95;
 
         public void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
         {
