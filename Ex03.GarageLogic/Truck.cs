@@ -35,6 +35,9 @@ namespace Ex03.GarageLogic
 
         }
 
+        float IFuelVehicle.m_RemainingFuelLiters { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        float IFuelVehicle.m_MaxAmountOfFuel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public void Refuel(float remainingEnergy, float maxAmountOfFuel , float i_Amount, FuelType i_FuelType)
         {
             if (remainingEnergy + i_Amount <= maxAmountOfFuel)
