@@ -66,7 +66,7 @@ namespace Ex03.GarageLogic
     FuelType IFuelVehicle.m_FuelType => m_FuelType;
 
     // Implementing the Refuel method
-    public void Refuel(float i_Amount, FuelType i_FuelType)
+    public void Refuel(float i_currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
     {
         if (i_FuelType != m_FuelType)
         {
