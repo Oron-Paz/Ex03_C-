@@ -21,11 +21,11 @@ namespace Ex03.GarageLogic
         {
             foreach (Vehicle vehicle in vehicles)
             {
-                Console.WriteLine(vehicle.LicenseNumber);
-                //if (vehicle.LicenseNumber.Equals(i_LicenseNumber))
-                //{
-                  //  return vehicle;
-                //}
+                //Console.WriteLine(vehicle.LicenseNumber);
+                if (vehicle.LicenseNumber.Equals(i_LicenseNumber))
+                {
+                    return vehicle;
+                }
             }
             return null;
         }

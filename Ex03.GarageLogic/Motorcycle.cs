@@ -9,11 +9,6 @@ namespace Ex03.GarageLogic
 {
     public class Motorcycle : Vehicle
     {
-        private static string modelName;
-        private static string licenseNumber;
-        private static float remainingEnergy;
-        private static string ownerName;
-        private static string ownerPhoneNumber;
         public LicenseType LicenseType { get; set; }
         public int EngineVolume { get; set; }
 

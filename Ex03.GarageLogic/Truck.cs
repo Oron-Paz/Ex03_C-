@@ -9,11 +9,6 @@ namespace Ex03.GarageLogic
 {
     public class Truck : Vehicle, IFuelVehicle
     {
-        private static string modelName;
-        private static string licenseNumber;
-        private static float remainingEnergy;
-        private static string ownerName;
-        private static string ownerPhoneNumber;
         private bool m_CarryingHazardousMaterials;
         private float m_CargoVolume;
         private FuelType m_FuelType;

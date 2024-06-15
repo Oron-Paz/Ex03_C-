@@ -8,11 +8,6 @@ namespace Ex03.GarageLogic
 {
     public class Car : Vehicle
     {
-        private static string modelName;
-        private static string licenseNumber;
-        private static float remainingEnergy;
-        private static string ownerName;
-        private static string ownerPhoneNumber;
         private CarColor m_color;
         private int m_doors;
 
