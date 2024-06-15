@@ -10,7 +10,7 @@ namespace Ex03.GarageLogic
     {
         private string m_Manufacture;
         private float m_MaxAirRecomended;
-        public float m_CurrentPreasure { get; set; }
+        public float m_CurrentPressure { get; set; }
 
 
         public string ManufactureName
@@ -26,15 +26,8 @@ namespace Ex03.GarageLogic
         {
             m_Manufacture = i_manufacture;
             m_MaxAirRecomended = i_maxAirRecomended;
-            m_CurrentPreasure = i_currentpreasure;
+            m_CurrentPressure = i_currentPressure;
 
-        }
-        public void Inflate(float i_AirToAdd)
-        {
-            if (m_CurrentPreasure + i_AirToAdd <= m_MaxAirRecomended)
-            {
-                m_CurrentPreasure += i_AirToAdd;
-            }
         }
     }
 }
