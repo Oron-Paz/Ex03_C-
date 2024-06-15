@@ -51,19 +51,32 @@ namespace Ex03.GarageLogic
 
         public FuelMotorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
         {
-            IFuelVehicle.m_RemainingFuelLiters = remainingFuelLiters;
+            m_RemainingFuelLiters = remainingFuelLiters;
         }
 
-        float IFuelVehicle.m_RemainingFuelLiters { get; set; };
-        float IFuelVehicle.m_MaxAmountOfFuel { get;} = 55;
-        FuelType IFuelVehicle.m_FuelType { get; } = FuelType.Octane98;
+        / Explicit interface implementation
+    float IFuelVehicle.m_RemainingFuelLiters
+    {
+        get { return m_RemainingFuelLiters; }
+        set { m_RemainingFuelLiters = value; }
+    }
 
-        public void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
+    float IFuelVehicle.m_MaxAmountOfFuel => m_MaxAmountOfFuel;
+    FuelType IFuelVehicle.m_FuelType => m_FuelType;
+
+    // Implementing the Refuel method
+    public void Refuel(float i_Amount, FuelType i_FuelType)
+    {
+        if (i_FuelType != m_FuelType)
         {
-            if (m_RemainingFuelLiters + i_Amount <= m_MaxAmountOfFuel)
-            {
-                m_RemainingFuelLiters += i_Amount;
-            }
+            throw new ArgumentException($"Fuel type {i_FuelType} is not compatible with {m_FuelType}");
         }
+
+        if (m_RemainingFuelLiters + i_Amount > m_MaxAmountOfFuel)
+        {
+            throw new ArgumentException($"Amount of fuel exceeds the tank capacity of {m_MaxAmountOfFuel} liters.");
+        }
+
+        m_RemainingFuelLiters += i_Amount;
     }
 }
