@@ -32,7 +32,7 @@ namespace Ex03.GarageLogic
             m_MaxEngineTime = 2;
         }
 
-        public void Recharge(float hours)
+        public void Recharge(float minutes)
         {
             if (m_RemainingEngineTime + hours <= m_MaxEngineTime)
             {

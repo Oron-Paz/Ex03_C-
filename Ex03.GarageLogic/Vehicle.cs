@@ -10,7 +10,7 @@ namespace Ex03.GarageLogic
 
     public interface IElectricVehicle
     {
-        void Recharge(float hours);
+        void Recharge(float minutes);
     }
     public interface IFuelVehicle
     {

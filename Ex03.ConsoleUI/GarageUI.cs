@@ -263,7 +263,7 @@ public class GarageUI
             }
             Console.WriteLine("Please enter the amount of fuel to refuel:");
             float amount = float.Parse(Console.ReadLine());
-            vehicle.Refuel(vehicle.RemainingFuelLiters, vehicle.MaxAmountOfFuel, amount, fuelType);
+            ((IFuelVehicle)vehicle).Refuel(((IFuelVehicle)vehicle).RemainingFuelLiters, ((IFuelVehicle)vehicle).MaxAmountOfFuel, amount, fuelType);
             return;
         }
         else
@@ -288,7 +288,7 @@ public class GarageUI
         {
             Console.WriteLine("Please enter the amount of minutes to charge:");
             float minutes = float.Parse(Console.ReadLine());
-            vehicle.Recharge(minutes);
+            ((IElectricVehicle)vehicle).Recharge(minutes);
             return;
         }
         else
