@@ -65,9 +65,10 @@ public class GarageUI
             }
         } 
     }
+    // Inserts a new vehicle into the garage.
     private static void InsertNewVehicle()
     {
-        Console.WriteLine("\nHello, please select a veichle type:");
+        Console.WriteLine("\nHello, please select a vehicle type:");
         Console.WriteLine("[1] Fuel Car");
         Console.WriteLine("[2] Electric Car");
         Console.WriteLine("[3] Fuel Motorcycle");
@@ -154,6 +155,7 @@ public class GarageUI
             int engineVolume = int.Parse(Console.ReadLine());
             Console.WriteLine("What is the remaining fuel liters of the motorcycle?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
+            // check if is the remaining fuel is appropiate.
             if(remainingFuelLiters < 0 || remainingFuelLiters > 55)
             {
                 throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 55 liters.");
