@@ -40,11 +40,18 @@ namespace Ex03.GarageLogic
         }
         float IElectricVehicle.m_MaxEngineTime => 3.5f;
 
-        public void Recharge(float minutes)
+        public void Recharge(float i_minutes)
         {
-            if (m_RemainingEngineTime + minutes <= m_MaxEngineTime)
+            if (m_RemainingEngineTime + i_minutes <= m_MaxEngineTime)
             {
-                m_RemainingEngineTime += minutes;
+                m_RemainingEngineTime += i_minutes;
+            }
+            else
+            {
+                Console.WriteLine($"The amount of hours currently is{m_RemainingEngineTime} and the amount of hours you want to add is {i_minutes}");
+                Console.WriteLine("The amount of hours exceeds the maximum recharge time of 2.5 hours.");
+                
+                return;
             }
         }
     }
