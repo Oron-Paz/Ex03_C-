@@ -45,4 +45,5 @@ namespace Ex03.GarageLogic
             
             return new Truck(modelName, licenseNumber, remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, isCarryingDangerousMaterials, cargoVolume, i_RemainingFuelLiters);
         }
+    }
 }

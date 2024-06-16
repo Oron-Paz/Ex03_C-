@@ -132,7 +132,7 @@ public class GarageUI
             {
                 throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 45 liters.");
             }
-            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingFuelLiters));
+            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingFuelLiters));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
             return;
 
@@ -159,7 +159,7 @@ public class GarageUI
             {
                 throw new ArgumentException("\nRemaining engine time must be a positive value and under the maximum capacity of 35 hours.");
             }
-            garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingEngineTime));
+            garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingEngineTime));
             Console.WriteLine($"Electric car with license number {licenseNumber} was added to garage.");
             return;
         }
@@ -180,7 +180,7 @@ public class GarageUI
             {
                 throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 55 liters.");
             }
-            garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume, remainingFuelLiters));
+            garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume, remainingFuelLiters));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
             return;
         }
@@ -201,7 +201,7 @@ public class GarageUI
             {
                 throw new ArgumentException("\nRemaining engine time must be a positive value and under the maximum capacity of 25 hours.");
             }
-            garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume, remainingEngineTime));
+            garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume, remainingEngineTime));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
             return;
         }
@@ -222,7 +222,7 @@ public class GarageUI
             {
                 throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 120 liters.");
             }
-            garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, new List<Wheel>(), ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume, remainingFuelLiters));
+            garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume, remainingFuelLiters));
         }
         else
         {
