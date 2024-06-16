@@ -215,5 +215,51 @@ namespace Ex03.GarageLogic
                 return i_remainingEngineTime;
             }
         }
+
+        public LicenseType validateLicenseType(string licenseType)
+        {
+            try
+            {
+                LicenseType license = (LicenseType)Enum.Parse(typeof(LicenseType), licenseType);
+                if (license != LicenseType.A && license != LicenseType.A1 && license != LicenseType.AA && license != LicenseType.B1)
+                {
+                    throw new ArgumentException("\nInvalid license type.");
+                }
+                return license;
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                bool validLicense = false;
+                while (validLicense == false)
+                {
+                    Console.WriteLine("Please enter a valid license type: (A, A1, A2, B)");
+                    licenseType = Console.ReadLine().ToUpper();
+                    if(licenseType == "A" || licenseType == "A1" || licenseType == "A2" || licenseType == "B"){
+                        validLicense = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid license type.");
+                    }
+                    
+                }
+                return (LicenseType)Enum.Parse(typeof(LicenseType), licenseType);
+            }
+        }
+        
+        public float validateEngineVolume(string engineSize)
+        {
+           if (engineSize.Any(char.IsLetter) || int.Parse(engineSize) < 0)
+           {
+               Console.WriteLine("Engine size must be a positive value.");
+               while (engineSize.Any(char.IsLetter) || int.Parse(engineSize) < 0)
+               {
+                   Console.WriteLine("Please enter a valid engine size:");
+                   engineSize = Console.ReadLine();
+               }
+           }
+            return float.Parse(engineSize);
+        }
     }
 }

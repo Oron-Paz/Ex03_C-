@@ -112,7 +112,7 @@ public class GarageUI
         if (option == "1")
         {
             // Create a new FuelCar
-            Console.WriteLine("What is the color of the car?");
+            Console.WriteLine("What is the color of the car?\n");
             string color = Console.ReadLine().ToLower();
             eCarColor carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
@@ -129,7 +129,7 @@ public class GarageUI
         else if (option == "2")
         {
             // Create a new ElectricCar
-            Console.WriteLine("What is the color of the car?");
+            Console.WriteLine("\nWhat is the color of the car?");
             string color = Console.ReadLine().ToLower();
             eCarColor carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
@@ -188,13 +188,19 @@ public class GarageUI
         else if (option == "5")
         {
             // Create a new Truck
-            Console.WriteLine("Is the truck carrying dangerous materials? (yes/no)");
+            Console.WriteLine("\nIs the truck carrying dangerous materials? (yes/no)");
             bool isCarryingDangerousMaterials = Console.ReadLine().ToLower() == "yes";
-            Console.WriteLine("What is the cargo volume of the truck?");
+            Console.WriteLine("\nWhat is the cargo volume of the truck?");
             float cargoVolume = float.Parse(Console.ReadLine());
             if(cargoVolume < 0)
             {
-                throw new ArgumentException("\nCargo volume must be a positive value.");
+                while(cargoVolume < 0)
+                {
+                    Console.WriteLine("\nInvalid cargo volume.");
+                    Console.WriteLine("Please enter a valid cargo volume:");
+                    cargoVolume = float.Parse(Console.ReadLine());
+                }
+                return;
             }
             Console.WriteLine("What is the remaining fuel liters of the truck?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
