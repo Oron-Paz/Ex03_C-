@@ -30,25 +30,25 @@ namespace Ex03.GarageLogic
             return null;
         }
 
-        public string validateName(string i_Name)
+        public string validateName(string i_ownerName)
         {
             try
             {
-                if(ownerName.Any(char.IsDigit))
+                if(i_ownerName.Any(char.IsDigit))
                 {
                     throw new ArgumentException("\nOwner name cannot contain digits.");
                 }
-                return ownerName;
+                return i_ownerName;
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
-                while(ownerName.Any(char.IsDigit))
+                while(i_ownerName.Any(char.IsDigit))
                 {
                     Console.WriteLine("\nPlease enter a valid owner name:");
-                    ownerName = Console.ReadLine();
+                    i_ownerName = Console.ReadLine();
                 }
-                return ownerName;
+                return i_ownerName;
             }
         }
 
