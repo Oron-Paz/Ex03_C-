@@ -23,7 +23,7 @@ namespace Ex03.GarageLogic
     public class ElectricMotorcycle : Motorcycle, IElectricVehicle
     {
         private float m_RemainingEngineTime;
-        private float m_MaxEngineTime = 25;
+        private float m_MaxEngineTime = float(2.5);
 
         public ElectricMotorcycle(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus i_vehicleStatus, LicenseType i_licenseType, int i_engineVolume, float i_remainingEngineTime) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber, i_vehicleStatus, i_licenseType, i_engineVolume)
         {
