@@ -377,6 +377,7 @@ public class GarageUI
             Console.WriteLine("Vehicle not found.");
             return;
         }
+        Console.WriteLine("Vehicle Information: ============================");
         Console.WriteLine($"Vehicle Model: {vehicle.m_ModelName}");
         Console.WriteLine($"Vehicle License Number: {vehicle.m_LicenseNumber}");
         Console.WriteLine($"Vehicle Remaining Energy: {vehicle.m_RemainingEnergy}");
@@ -395,13 +396,13 @@ public class GarageUI
             Console.WriteLine($"Vehicle Maximum Engine Time: {((IElectricVehicle)vehicle).m_MaxEngineTime}");
         }
         
-        Console.WriteLine("Vehicle Wheels:");
+        Console.WriteLine("Vehicle Wheels: ===================================");
         Console.WriteLine($"Number of wheels = {vehicle.m_Wheels.Count}");
-        //Console.WriteLine($"Wheel Manufacturer: {vehicle.m_Wheels[1].m_Manufacture}");
-        //Console.WriteLine($"Wheel Current Pressure: {vehicle.m_Wheels[1].m_CurrentPressure}");
-        //Console.WriteLine($"Wheel Maximum Air Pressure: {vehicle.m_Wheels[1].m_MaxAirRecomended}");
+        Console.WriteLine($"Wheel Manufacturer: {vehicle.m_Wheels[1].m_Manufacture}");
+        Console.WriteLine($"Wheel Current Pressure: {vehicle.m_Wheels[1].m_CurrentPressure}");
+        Console.WriteLine($"Wheel Maximum Air Pressure: {vehicle.m_Wheels[1].m_MaxAirRecomended}");
 
-        Console.WriteLine("Vehicle Specific Information:");
+        Console.WriteLine("Vehicle Specific Information: ============================");
         if(vehicle is Car)
         {
             Console.WriteLine($"Vehicle Color: {((Car)vehicle).m_color}");
