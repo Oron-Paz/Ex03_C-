@@ -9,14 +9,6 @@ namespace Ex03.GarageLogic
     public class VehicleFactory
     {
         // Supported vehicle types enumeration
-        public enum VehicleType
-        {
-            FuelCar,
-            ElectricCar,
-            FuelMotorcycle,
-            ElectricMotorcycle,
-            Truck
-        }
 
         // Method to create a vehicle based on the specified type
 

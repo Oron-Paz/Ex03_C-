@@ -10,14 +10,13 @@ namespace Ex03.GarageLogic
     {
         public CarColor m_color;
         public int m_doors;
-        public List<Wheel> m_wheels { get; private set; }
 
         // Constructor
-        public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber)
+        public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, List<Wheel> wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber)
         {
             m_color = i_carColor;
             m_doors = i_numDoors;
-            m_wheels = new List<Wheel>();
+            m_Wheels = wheels ?? new List<Wheel>();
             this.m_wheels.Add(new Wheel("Michelin", 31, 31));
             m_wheels.Add(new Wheel("Michelin", 31, 31));
             m_wheels.Add(new Wheel("Michelin", 31, 31));
