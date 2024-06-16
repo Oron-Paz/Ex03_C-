@@ -16,7 +16,7 @@ namespace Ex03.GarageLogic
         public static FuelCar CreateFuelCar(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus i_vehicleStatus, CarColor i_color, int i_doors, float i_remainingFuelLiters)
         {  
             
-            return new FuelCar(i_modelName, i_licenseNumber, i_remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, VehicleStatus.InRepair, i_color, i_doors, 0);
+            return new FuelCar(i_modelName, i_licenseNumber, i_remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, VehicleStatus.InRepair, i_color, i_doors, i_remainingFuelLiters);
         }
 
         public static ElectricCar CreateElectricCar(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus i_vehicleStatus, CarColor i_color, int i_doors, float i_remainingEngineTime)
