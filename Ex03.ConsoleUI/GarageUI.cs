@@ -251,7 +251,7 @@ public class GarageUI
             Console.WriteLine("[1] InRepair");
             Console.WriteLine("[2] Repaired");
             Console.WriteLine("[3] Paid");
-            string option = Console.ReadLine();
+            string option2 = Console.ReadLine();
             if (int.TryParse(option2, out int statusNumber) && statusNumber >= 1 && statusNumber <= 3)
             {
                 VehicleStatus status = (VehicleStatus)(statusNumber - 1);
