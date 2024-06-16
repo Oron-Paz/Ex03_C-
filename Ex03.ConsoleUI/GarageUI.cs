@@ -101,25 +101,10 @@ public class GarageUI
         string modelName = Console.ReadLine();
         Console.WriteLine("\nWhat is the owner name of the vehicle?");
         string ownerName = Console.ReadLine();
-        validateName(ownerName);
+        ownerName = validateName(ownerName);
         Console.WriteLine("\nWhat is the owner phone number of the vehicle?");
         string ownerPhoneNumber = Console.ReadLine();
-        try
-        {
-            if(!ownerPhoneNumber.All(char.IsDigit))
-            {
-                throw new ArgumentException("\nOwner phone number must be all digits.");
-            }
-        }
-        catch (ArgumentException e)
-        {
-            Console.WriteLine(e.Message);
-            while(ownerPhoneNumber.All(char.IsDigit) == false)
-            {
-                Console.WriteLine("\nPlease enter a valid owner phone number:");
-                ownerPhoneNumber = Console.ReadLine();
-            }
-        }
+        ownerPhoneNumber = validatePhoneNumber(ownerPhoneNumber);
         Console.WriteLine("\nWhat is the remaining energy of the vehicle?");
         float remainingEnergy = float.Parse(Console.ReadLine());
         try
