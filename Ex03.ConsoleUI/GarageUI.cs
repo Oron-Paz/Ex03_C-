@@ -116,7 +116,7 @@ public class GarageUI
             CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
             carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
-            int doors = Console.ReadLine();
+            string doors = Console.ReadLine();
             doors = garage.validateDoors(doors);
             Console.WriteLine("What is the remaining fuel liters of the car?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
@@ -133,11 +133,11 @@ public class GarageUI
             string color = Console.ReadLine().ToLower();
             color = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
-            int doors = int.Parse(Console.ReadLine());
-            doorss = garage.validateDoors(doors);
+            string doors = Console.ReadLine();
+            doorss = garage.validateDoor(doors);
             Console.WriteLine("What is the remaining engine time of the car?");
             float remainingEngineTime = float.Parse(Console.ReadLine());
-            remainingEngineTime = garage.validateRemainingEnergy(remainingEngineTime)
+            remainingEngineTime = garage.validateRemainingEnergy(remainingEngineTime);
             garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingEngineTime));
             Console.WriteLine($"Electric car with license number {licenseNumber} was added to garage.");
             return;
