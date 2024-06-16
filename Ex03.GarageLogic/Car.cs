@@ -12,15 +12,12 @@ namespace Ex03.GarageLogic
         public int m_doors;
 
         // Constructor
-        public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, List<Wheel> wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber)
+        public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber)
         {
             m_color = i_carColor;
             m_doors = i_numDoors;
 
-            wheels.Add(new Wheel("Michelin", 31, 31));
-            wheels.Add(new Wheel("Michelin", 31, 31));
-            wheels.Add(new Wheel("Michelin", 31, 31));
-            wheels.Add(new Wheel("Michelin", 31, 31));
+            InitializeWheels(4, "Michelin", 31, 31);
             
         }
     }
@@ -30,12 +27,11 @@ namespace Ex03.GarageLogic
         private float m_RemainingEngineTime;
         private float m_MaxEngineTime;
 
-        public ElectricCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingEngineTime) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
+        public ElectricCar(string modelName, string licenseNumber, float remainingEnergy, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingEngineTime) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
         {
             m_RemainingEngineTime = remainingEngineTime;
             m_MaxEngineTime = 35;
-
-            
+    
         }
 
         float IElectricVehicle.m_RemainingEngineTime 
@@ -60,7 +56,7 @@ namespace Ex03.GarageLogic
         private float m_RemainingFuelLiters;
         private float m_MaxAmountOfFuel = 45;
 
-        public FuelCar(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
+        public FuelCar(string modelName, string licenseNumber, float remainingEnergy, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
         {
             //m_FuelType = FuelType.Octane95;
             m_RemainingFuelLiters = remainingFuelLiters;
