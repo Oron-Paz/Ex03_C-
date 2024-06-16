@@ -118,10 +118,7 @@ public class GarageUI
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
-            Console.WriteLine("What is the remaining fuel liters of the car?");
-            float remainingFuelLiters = float.Parse(Console.ReadLine());
-            remainingFuelLiters = garage.validateRemainingFuelLitersCar(remainingFuelLiters);
-            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss, remainingFuelLiters));
+            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
             return;
 
@@ -135,10 +132,8 @@ public class GarageUI
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
-            Console.WriteLine("What is the remaining engine time of the car?");
-            float remainingEngineTime = float.Parse(Console.ReadLine());
-            remainingEngineTime = garage.validateRemainingEnergy(remainingEngineTime);
-            garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss, remainingEngineTime));
+            
+            garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss));
             Console.WriteLine($"Electric car with license number {licenseNumber} was added to garage.");
             return;
         }
@@ -152,15 +147,8 @@ public class GarageUI
                 throw new ArgumentException("\nInvalid license type.");
             }
             Console.WriteLine("What is the engine volume of the motorcycle?");
-            int engineVolume = int.Parse(Console.ReadLine());
-            Console.WriteLine("What is the remaining fuel liters of the motorcycle?");
-            float remainingFuelLiters = float.Parse(Console.ReadLine());
-            // check if is the remaining fuel is appropiate.
-            if(remainingFuelLiters < 0 || remainingFuelLiters > 55)
-            {
-                throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 55 liters.");
-            }
-            garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume, remainingFuelLiters));
+            int engineVolume = int.Parse(Console.ReadLine());            
+            garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
             return;
         }
@@ -175,13 +163,7 @@ public class GarageUI
             }
             Console.WriteLine("What is the engine volume of the motorcycle?");
             int engineVolume = int.Parse(Console.ReadLine());
-            Console.WriteLine("What is the remaining engine time of the motorcycle?");
-            float remainingEngineTime = float.Parse(Console.ReadLine());
-            if(remainingEngineTime < 0 || remainingEngineTime > 25)
-            {
-                throw new ArgumentException("\nRemaining engine time must be a positive value and under the maximum capacity of 25 hours.");
-            }
-            garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume, remainingEngineTime));
+            garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
             return;
         }
@@ -194,12 +176,10 @@ public class GarageUI
             float cargoVolume = float.Parse(Console.ReadLine());
             if(cargoVolume < 0)
             {
-                throw new ArgumentException("\nCargo volume must be a positive value.");
+                console.WriteLine("Invalid cargo volume.");
+                return;
             }
-            Console.WriteLine("What is the remaining fuel liters of the truck?");
-            float remainingFuelLiters = float.Parse(Console.ReadLine());
-            remainingFuelLiters = garage.validateRemainingFuelLitersTruck(remainingFuelLiters);
-            garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume, remainingFuelLiters));
+            garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume));
         }
         else
         {
