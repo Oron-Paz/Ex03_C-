@@ -16,11 +16,11 @@ namespace Ex03.GarageLogic
         {
             m_color = i_carColor;
             m_doors = i_numDoors;
-            m_Wheels = wheels ?? new List<Wheel>();
-            this.m_wheels.Add(new Wheel("Michelin", 31, 31));
-            m_wheels.Add(new Wheel("Michelin", 31, 31));
-            m_wheels.Add(new Wheel("Michelin", 31, 31));
-            m_wheels.Add(new Wheel("Michelin", 31, 31));
+            
+            
+            wheels.Add(new Wheel("Michelin", 31, 31));
+            wheels.Add(new Wheel("Michelin", 31, 31));
+            wheels.Add(new Wheel("Michelin", 31, 31));
         }
     }
 
