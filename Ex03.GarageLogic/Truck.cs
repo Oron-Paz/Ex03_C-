@@ -43,9 +43,14 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                Console.WriteLine($"The amount of fuel currently is{i_currentFuel} and the amount of fuel you want to add is {i_Amount}");
-                Console.WriteLine("The amount of fuel exceeds the maximum fuel capacity time of 120L.");
-
+                while(m_RemainingFuelLiters + i_Amount > m_MaxAmountOfFuel)
+                {
+                    Console.WriteLine($"The amount of fuel currently is{i_currentFuel} and the amount of fuel you want to add is {i_Amount}");
+                    Console.WriteLine("The amount of fuel exceeds the maximum fuel capacity time of 120L.");
+                    Console.WriteLine("Please enter a valid amount of fuel to add:");
+                    i_Amount = float.Parse(Console.ReadLine());
+                }
+                m_RemainingFuelLiters += i_Amount;
                 return;
             }
         }

@@ -106,7 +106,7 @@ public class GarageUI
         Console.WriteLine("\nWhat is the owner phone number of the vehicle?");
         string ownerPhoneNumber = Console.ReadLine();
         ownerPhoneNumber = garage.validatePhoneNumber(ownerPhoneNumber);
-        Console.WriteLine("\nWhat is the remaining energy of the vehicle?");
+        Console.WriteLine("\nWhat is the remaining energy of the vehicle? (as a percantage from 0 to 100)");
         float remainingEnergy = float.Parse(Console.ReadLine());
         remainingEnergy = garage.validateRemainingEnergy(remainingEnergy);
         if (option == "1")
@@ -120,7 +120,7 @@ public class GarageUI
             int doorss = garage.validateDoor(doors);
             Console.WriteLine("What is the remaining fuel liters of the car?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
-            remainingFuelLiters = garage.validateRemainingFuelLiters(remainingFuelLiters);
+            remainingFuelLiters = garage.validateRemainingFuelLitersCar(remainingFuelLiters);
             garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss, remainingFuelLiters));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
             return;
@@ -198,10 +198,7 @@ public class GarageUI
             }
             Console.WriteLine("What is the remaining fuel liters of the truck?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
-            if(remainingFuelLiters < 0 || remainingFuelLiters > 120)
-            {
-                throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 120 liters.");
-            }
+            remainingFuelLiters = garage.validateRemainingFuelLitersTruck(remainingFuelLiters);
             garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume, remainingFuelLiters));
         }
         else
