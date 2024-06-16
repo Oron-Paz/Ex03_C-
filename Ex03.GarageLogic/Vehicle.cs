@@ -18,7 +18,7 @@ namespace Ex03.GarageLogic
     {
         //remaining fuel
 
-        void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType);
+        void Refuel(float currentFuel, float i_Amount, FuelType i_FuelType);
 
         float m_RemainingFuelLiters { get; set; }
 
@@ -68,11 +68,11 @@ namespace Ex03.GarageLogic
             m_Status = VehicleStatus.InRepair;
         }
 
-        public void InitializeWheels(int numWheels, string manufacturer, float currentAirPressure, float maxAirPressure)
+        public void InitializeWheels(int i_numWheels, string i_manufacturer, float i_currentAirPressure, float i_maxAirPressure)
         {
-            for (int i = 0; i < numWheels; i++)
+            for (int i = 0; i < i_numWheels; i++)
             {
-                m_Wheels.Add(new Wheel(manufacturer, currentAirPressure, maxAirPressure));
+                m_Wheels.Add(new Wheel(i_manufacturer, i_currentAirPressure, i_maxAirPressure));
             }
         }
     }

@@ -16,10 +16,10 @@ namespace Ex03.GarageLogic
         private float m_RemainingFuelLiters;
 
 
-        public Truck(string modelName, string licenseNumber, float remainingEnergy, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume, float i_RemainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
+        public Truck(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus i_vehicleStatus, bool i_carryingHazardousMaterials, float i_cargoVolume, float i_RemainingFuelLiters) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber)
         {
-            m_CarryingHazardousMaterials = carryingHazardousMaterials;
-            m_CargoVolume = cargoVolume;
+            m_CarryingHazardousMaterials = i_carryingHazardousMaterials;
+            m_CargoVolume = i_cargoVolume;
             //m_FuelType = FuelType.Soler;
             m_RemainingFuelLiters = i_RemainingFuelLiters;
             m_MaxAmountOfFuel = 120;
@@ -35,11 +35,11 @@ namespace Ex03.GarageLogic
 
         FuelType IFuelVehicle.m_FuelType => FuelType.Soler;
 
-        public void Refuel(float remainingEnergy, float maxAmountOfFuel , float i_Amount, FuelType i_FuelType)
+        public void Refuel(float i_remainingEnergy, float i_Amount, FuelType i_FuelType)
         {
-            if (remainingEnergy + i_Amount <= maxAmountOfFuel)
+            if (i_remainingEnergy + i_Amount <= m_MaxAmountOfFuel)
             {
-                remainingEnergy += i_Amount;
+                i_remainingEnergy += i_Amount;
             }
         }
 

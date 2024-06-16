@@ -26,9 +26,9 @@ namespace Ex03.GarageLogic
         private float m_RemainingEngineTime;
         private float m_MaxEngineTime;
 
-        public ElectricCar(string modelName, string licenseNumber, float remainingEnergy, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingEngineTime) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
+        public ElectricCar(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus i_vehicleStatus, CarColor i_carColor, int i_numDoors, float i_remainingEngineTime) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber, i_vehicleStatus, i_carColor, i_numDoors)
         {
-            m_RemainingEngineTime = remainingEngineTime;
+            m_RemainingEngineTime = i_remainingEngineTime;
             m_MaxEngineTime = 35;
     
         }
@@ -55,10 +55,10 @@ namespace Ex03.GarageLogic
         private float m_RemainingFuelLiters;
         private float m_MaxAmountOfFuel = 45;
 
-        public FuelCar(string modelName, string licenseNumber, float remainingEnergy, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor carColor, int numDoors, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, vehicleStatus, carColor, numDoors)
+        public FuelCar(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus i_vehicleStatus, CarColor i_carColor, int i_numDoors, float i_remainingFuelLiters) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber, i_vehicleStatus, i_carColor, i_numDoors)
         {
             //m_FuelType = FuelType.Octane95;
-            m_RemainingFuelLiters = remainingFuelLiters;
+            m_RemainingFuelLiters = i_remainingFuelLiters;
             m_MaxAmountOfFuel = 45;
         }
 
@@ -71,7 +71,7 @@ namespace Ex03.GarageLogic
 
         FuelType IFuelVehicle.m_FuelType => FuelType.Octane95;
 
-        public void Refuel(float currentFuel, float maxFuel, float i_Amount, FuelType i_FuelType)
+        public void Refuel(float i_currentFuel, float i_Amount, FuelType i_FuelType)
         {
             if (m_RemainingFuelLiters + i_Amount <= m_MaxAmountOfFuel)
             {
