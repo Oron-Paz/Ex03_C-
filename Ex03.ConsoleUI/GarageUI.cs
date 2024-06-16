@@ -142,11 +142,11 @@ public class GarageUI
             // Create a new FuelMotorcycle
             Console.WriteLine("\nWhat is the license type of the motorcycle?");
             string licenseType = Console.ReadLine();
-            licenseType = garage.validateLicenseType(licenseType);
+            LicenseType licenseTypes = garage.validateLicenseType(licenseType);
             Console.WriteLine("\nWhat is the engine volume of the motorcycle?");
             string engineVolume = Console.ReadLine();
-            engineVolume = garage.validateEngineVolume(engineVolume);            
-            garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume));
+            float engineVolumes = garage.validateEngineVolume(engineVolume);            
+            garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseTypes,(int)engineVolumes));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
             return;
         }
@@ -154,12 +154,12 @@ public class GarageUI
         {
             // Create a new ElectricMotorcycle
             Console.WriteLine("\nWhat is the license type of the motorcycle?");
-            LicenseType licenseType = Console.ReadLine();
-            licenseType = garage.validateLicenseType(licenseType);
+            string licenseType = Console.ReadLine();
+            LicenseType licenseTypes = garage.validateLicenseType(licenseType);
             Console.WriteLine("\nWhat is the engine volume of the motorcycle?");
             string engineVolume = Console.ReadLine();
-            engineVolume = garage.validateEngineVolume(engineVolume);
-            garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume));
+            float engineVolumes = garage.validateEngineVolume(engineVolume);
+            garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseTypes, (int)engineVolumes));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
             return;
         }

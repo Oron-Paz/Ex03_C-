@@ -222,7 +222,7 @@ namespace Ex03.GarageLogic
             try
             {
                 LicenseType license = (LicenseType)Enum.Parse(typeof(LicenseType), licenseType);
-                if (license != LicenseType.A && license != LicenseType.A1 && license != LicenseType.A2 && license != LicenseType.B)
+                if (license != LicenseType.A && license != LicenseType.A1 && license != LicenseType.AA && license != LicenseType.B1)
                 {
                     throw new ArgumentException("\nInvalid license type.");
                 }
@@ -249,7 +249,7 @@ namespace Ex03.GarageLogic
             }
         }
         
-        public float validateEngingeSize(string engineSize)
+        public float validateEngineVolume(string engineSize)
         {
            if (engineSize.Any(char.IsLetter) || int.Parse(engineSize) < 0)
            {
