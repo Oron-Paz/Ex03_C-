@@ -39,16 +39,22 @@ namespace Ex03.GarageLogic
         float IElectricVehicle.m_MaxEngineTime => 2.5f;
 
 
-        public void Recharge(float i_minutes)
+        public void Recharge(float i_hours)
         {
-            if (m_RemainingEngineTime + i_minutes <= m_MaxEngineTime)
+            if (m_RemainingEngineTime + i_hours <= m_MaxEngineTime)
             {
-                m_RemainingEngineTime += i_minutes;
+                m_RemainingEngineTime += i_hours;
             }
             else
             {
-                Console.WriteLine($"The amount of hours currently is{m_RemainingEngineTime} and the amount of hours you want to add is {i_minutes}");
-                Console.WriteLine("The amount of hours exceeds the maximum recharge time of 2.5 hours.");
+                while(m_RemainingEngineTime + i_hours > m_MaxEngineTime)
+                {
+                    Console.WriteLine($"The amount of hours currently is{m_RemainingEngineTime} and the amount of hours you want to add is {i_hours}");
+                    Console.WriteLine("The amount of hours exceeds the maximum recharge time of 2.5 hours.");
+                    Console.WriteLine("Please enter a valid amount of hours to add:");
+                    i_hours = float.Parse(Console.ReadLine());
+                }
+                m_RemainingEngineTime += i_hours;
                 return;
             }
 
@@ -84,9 +90,14 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                Console.WriteLine($"The amount of fuel currently is{i_currentFuel} and the amount of fuel you want to add is {i_Amount}");
-                Console.WriteLine("The amount of fuel exceeds the maximum fuel capacity time of 5.5L.");
-
+                while(m_RemainingFuelLiters + i_Amount > m_MaxAmountOfFuel)
+                {
+                    Console.WriteLine($"The amount of fuel currently is{i_currentFuel} and the amount of fuel you want to add is {i_Amount}");
+                    Console.WriteLine("The amount of fuel exceeds the maximum fuel capacity time of 5.5L.");
+                    Console.WriteLine("Please enter a valid amount of fuel to add:");
+                    i_Amount = float.Parse(Console.ReadLine());
+                }
+                m_RemainingFuelLiters += i_Amount;
                 return;
             }
         }
