@@ -58,15 +58,23 @@ namespace Ex03.GarageLogic
             set { m_RemainingEnergy = value; }
         }
 
-        public Vehicle(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber)
+        public Vehicle(string i_modelName, string i_licenseNumber, float i_remainingEnergy, List<Wheel> wheels, string i_OwnerName, string i_OwnerPhoneNumber)
         {
             m_ModelName = i_modelName;
             m_LicenseNumber = i_licenseNumber;
             m_RemainingEnergy = i_remainingEnergy;
-            m_Wheels = new List<Wheel>();
+            m_Wheels = wheels ?? new List<Wheel>();
             m_OwnerName = i_OwnerName;
             m_OwnerPhoneNumber = i_OwnerPhoneNumber;
             m_Status = VehicleStatus.InRepair;
+        }
+
+        protected void AddWheels(int numberOfWheels, string manufacturer, float currentAirPressure, float maxAirPressure)
+        {
+            for (int i = 0; i < numberOfWheels; i++)
+            {
+                m_Wheels.Add(new Wheel(manufacturer, currentAirPressure, maxAirPressure));
+            }
         }
     }
 }

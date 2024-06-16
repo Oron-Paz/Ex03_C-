@@ -12,16 +12,16 @@ namespace Ex03.GarageLogic
         public int m_doors;
 
         // Constructor
-        public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, List<Wheel> wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber)
+        public Car(string i_modelName, string i_licenseNumber, float i_remainingEnergy, List<Wheel> wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, CarColor i_carColor, int i_numDoors) : base(i_modelName, i_licenseNumber, i_remainingEnergy, wheels, i_ownerName, i_ownerPhoneNumber)
         {
             m_color = i_carColor;
             m_doors = i_numDoors;
             
-            wheels.Add(new Wheel("Michelin", 31, 31));
-            wheels.Add(new Wheel("Michelin", 31, 31));
-            wheels.Add(new Wheel("Michelin", 31, 31));
-            wheels.Add(new Wheel("Michelin", 31, 31));
         }
+        if(m_Wheels.Count == 0){
+            AddWheels(4, "Michelin", 31, 31);
+        }
+        
     }
 
     public class ElectricCar : Car, IElectricVehicle
