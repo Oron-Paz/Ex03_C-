@@ -249,15 +249,23 @@ public class GarageUI
         {
             Console.WriteLine("Please select a status:");
             Console.WriteLine("[1] InRepair");
-            Console.WriteLine("[2] Fixed");
+            Console.WriteLine("[2] Repaired");
             Console.WriteLine("[3] Paid");
-            VehicleStatus status = (VehicleStatus)Enum.Parse(typeof(VehicleStatus), Console.ReadLine());
-            foreach (Vehicle vehicle in garage.vehicles)
+            string option = Console.ReadLine();
+            if (int.TryParse(option, out int statusNumber) && statusNumber >= 1 && statusNumber <= 3)
             {
-                if(vehicle.m_Status == status)
+                VehicleStatus status = (VehicleStatus)(statusNumber - 1);
+                foreach (Vehicle vehicle in garage.vehicles)
                 {
-                    Console.WriteLine("\n" + vehicle.LicenseNumber);
+                    if(vehicle.m_Status == status)
+                    {
+                        Console.WriteLine("\n" + vehicle.LicenseNumber);
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection. Please enter a number between 1 and 3.");
             }
         }
         else
