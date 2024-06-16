@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         public LicenseType LicenseType { get; set; }
         public int EngineVolume { get; set; }
 
-        public Motorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume) : base(modelName, licenseNumber, remainingEnergy, wheels, i_ownerName, i_ownerPhoneNumber)
+        public Motorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume) : base(modelName, licenseNumber, remainingEnergy, i_ownerName, i_ownerPhoneNumber)
         {
             LicenseType = licenseType;
             EngineVolume = engineVolume;

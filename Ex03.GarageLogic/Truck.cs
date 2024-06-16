@@ -16,7 +16,7 @@ namespace Ex03.GarageLogic
         private float m_RemainingFuelLiters;
 
 
-        public Truck(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume, float i_RemainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy,wheels, ownerName, ownerPhoneNumber)
+        public Truck(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume, float i_RemainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
         {
             m_CarryingHazardousMaterials = carryingHazardousMaterials;
             m_CargoVolume = cargoVolume;

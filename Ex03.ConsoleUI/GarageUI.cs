@@ -298,7 +298,7 @@ public class GarageUI
             Console.WriteLine("Vehicle not found.");
             return;
         }
-        foreach (Wheel wheel in vehicle.m_Wheels)
+        foreach (Wheel wheel in vehicle.wheels)
         {
             wheel.m_CurrentPressure = wheel.m_MaxAirRecomended;
         }
