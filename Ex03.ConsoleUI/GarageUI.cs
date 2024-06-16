@@ -105,7 +105,7 @@ public class GarageUI
         Console.WriteLine("\nWhat is the owner phone number of the vehicle?");
         string ownerPhoneNumber = Console.ReadLine();
         ownerPhoneNumber = garage.validatePhoneNumber(ownerPhoneNumber);
-        Console.WriteLine("\nWhat is the remaining energy of the vehicle?");
+        Console.WriteLine("\nWhat is the remaining energy of the vehicle? (as a percantage from 0 to 100)");
         float remainingEnergy = float.Parse(Console.ReadLine());
         remainingEnergy = garage.validateRemainingEnergy(remainingEnergy);
         if (option == "1")

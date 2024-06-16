@@ -163,7 +163,7 @@ namespace Ex03.GarageLogic
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
-                while(remainingFuelLiters < 0)
+                while(remainingFuelLiters < 0 || remainingFuelLiters > 45)
                 {
                     Console.WriteLine("Please enter a valid remaining fuel liters value:");
                     remainingFuelLiters = float.Parse(Console.ReadLine());
