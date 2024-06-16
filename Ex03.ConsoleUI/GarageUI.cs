@@ -252,7 +252,7 @@ public class GarageUI
             Console.WriteLine("[2] Repaired");
             Console.WriteLine("[3] Paid");
             string option = Console.ReadLine();
-            if (int.TryParse(option, out int statusNumber) && statusNumber >= 1 && statusNumber <= 3)
+            if (int.TryParse(option2, out int statusNumber) && statusNumber >= 1 && statusNumber <= 3)
             {
                 VehicleStatus status = (VehicleStatus)(statusNumber - 1);
                 foreach (Vehicle vehicle in garage.vehicles)
@@ -290,9 +290,17 @@ public class GarageUI
         Console.WriteLine("[1] InRepair");
         Console.WriteLine("[2] Repaired");
         Console.WriteLine("[3] Paid");
-        VehicleStatus status = (VehicleStatus)Enum.Parse(typeof(VehicleStatus), Console.ReadLine());
-        vehicle.m_Status = status;
-        Console.WriteLine("Vehicle status updated.");
+        string option = Console.ReadLine();
+
+        if (int.TryParse(option, out int statusNumber) && statusNumber >= 1 && statusNumber <= 3)
+        {
+            VehicleStatus status = (VehicleStatus)(statusNumber - 1);
+            vehicle.m_Status = status;
+        }
+        else
+        {
+            Console.WriteLine("Invalid selection. Please enter a number between 1 and 3.");
+        }
     }
 
     private static void InflateTiresToMax()
