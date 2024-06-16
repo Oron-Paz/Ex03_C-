@@ -66,7 +66,7 @@ namespace Ex03.GarageLogic
             m_Wheels = new List<Wheel>();
             m_OwnerName = i_OwnerName;
             m_OwnerPhoneNumber = i_OwnerPhoneNumber;
-            m_Status = VehicleStatus.InRepair;
+            m_Status = VehicleStatus.InRepaissr;
         }
     }
 }
