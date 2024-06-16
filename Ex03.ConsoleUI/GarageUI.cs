@@ -176,7 +176,7 @@ public class GarageUI
             float cargoVolume = float.Parse(Console.ReadLine());
             if(cargoVolume < 0)
             {
-                console.WriteLine("Invalid cargo volume.");
+                Console.WriteLine("Invalid cargo volume.");
                 return;
             }
             garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume));
