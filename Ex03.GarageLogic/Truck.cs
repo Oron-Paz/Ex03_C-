@@ -35,11 +35,18 @@ namespace Ex03.GarageLogic
 
         FuelType IFuelVehicle.m_FuelType => FuelType.Soler;
 
-        public void Refuel(float i_remainingEnergy, float i_Amount, FuelType i_FuelType)
+        public void Refuel(float i_currentFuel, float i_Amount, FuelType i_FuelType)
         {
-            if (i_remainingEnergy + i_Amount <= m_MaxAmountOfFuel)
+            if (m_RemainingFuelLiters + i_Amount <= m_MaxAmountOfFuel)
             {
-                i_remainingEnergy += i_Amount;
+                m_RemainingFuelLiters += i_Amount;
+            }
+            else
+            {
+                Console.WriteLine($"The amount of fuel currently is{i_currentFuel} and the amount of fuel you want to add is {i_Amount}");
+                Console.WriteLine("The amount of fuel exceeds the maximum fuel capacity time of 120L.");
+
+                return;
             }
         }
 

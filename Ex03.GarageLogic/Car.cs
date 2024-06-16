@@ -49,7 +49,7 @@ namespace Ex03.GarageLogic
             else
             {
                 Console.WriteLine($"The amount of hours currently is{m_RemainingEngineTime} and the amount of hours you want to add is {i_hours}");
-                Console.WriteLine("The amount of hours exceeds the maximum recharge time of 2.5 hours.");
+                Console.WriteLine("The amount of hours exceeds the maximum recharge time of 3.5 hours.");
                 
                 return;
             }

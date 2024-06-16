@@ -78,17 +78,17 @@ namespace Ex03.GarageLogic
         // Implementing the Refuel method
         public void Refuel(float i_currentFuel, float i_Amount, FuelType i_FuelType)
         {
-            if (i_FuelType != m_FuelType)
+            if (m_RemainingFuelLiters + i_Amount <= m_MaxAmountOfFuel)
             {
-                throw new ArgumentException($"Fuel type {i_FuelType} is not compatible with {m_FuelType}");
+                m_RemainingFuelLiters += i_Amount;
             }
-
-            if (m_RemainingFuelLiters + i_Amount > m_MaxAmountOfFuel)
+            else
             {
-                throw new ArgumentException($"Amount of fuel exceeds the tank capacity of {m_MaxAmountOfFuel} liters.");
-            }
+                Console.WriteLine($"The amount of fuel currently is{i_currentFuel} and the amount of fuel you want to add is {i_Amount}");
+                Console.WriteLine("The amount of fuel exceeds the maximum fuel capacity time of 5.5L.");
 
-            m_RemainingFuelLiters += i_Amount;
+                return;
+            }
         }
     }
 }
