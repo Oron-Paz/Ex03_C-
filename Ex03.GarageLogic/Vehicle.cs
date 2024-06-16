@@ -69,7 +69,7 @@ namespace Ex03.GarageLogic
             m_Status = VehicleStatus.InRepair;
         }
 
-        protected void AddWheels(int numberOfWheels, string manufacturer, float currentAirPressure, float maxAirPressure)
+        public void AddWheels(int numberOfWheels, string manufacturer, float currentAirPressure, float maxAirPressure)
         {
             for (int i = 0; i < numberOfWheels; i++)
             {
