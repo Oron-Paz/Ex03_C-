@@ -67,7 +67,7 @@ public class GarageUI
     }
     private static void InsertNewVehicle()
     {
-        Console.WriteLine("Hello, please select a veichle type:");
+        Console.WriteLine("\nHello, please select a veichle type:");
         Console.WriteLine("[1] Fuel Car");
         Console.WriteLine("[2] Electric Car");
         Console.WriteLine("[3] Fuel Motorcycle");
@@ -78,7 +78,7 @@ public class GarageUI
         {
             throw new ArgumentException("\nInvalid option.");
         }
-        Console.WriteLine("What is the license number of the vehicle?");
+        Console.WriteLine("\nWhat is the license number of the vehicle?");
         string licenseNumber = Console.ReadLine();
         if(licenseNumber.Contains(" "))
         {
@@ -90,13 +90,26 @@ public class GarageUI
             Console.WriteLine("\nVehicle already in the garage. what would you like to do?");
             return;
         }
-        Console.WriteLine("What is the model name of the vehicle?");
+        Console.WriteLine("\nWhat is the model name of the vehicle?");
         string modelName = Console.ReadLine();
         Console.WriteLine("\nWhat is the owner name of the vehicle?");
         string ownerName = Console.ReadLine();
-        if(ownerName.Contains(" ") || ownerName.Any(char.IsDigit))
+        try
         {
-            throw new ArgumentException("\nOwner name cannot contain spaces or numbers.");
+            if(ownerName.Any(char.IsDigit))
+            {
+                throw new ArgumentException("\nOwner name cannot contain digits.");
+            }
+        }
+        catch (ArgumentException e)
+        {
+            Console.WriteLine(e.Message);
+            while(ownerName.Any(char.IsDigit))
+            {
+                Console.WriteLine("\nPlease enter a valid owner name:");
+                ownerName = Console.ReadLine();
+            }
+            return;
         }
         Console.WriteLine("\nWhat is the owner phone number of the vehicle?");
         string ownerPhoneNumber = Console.ReadLine();
