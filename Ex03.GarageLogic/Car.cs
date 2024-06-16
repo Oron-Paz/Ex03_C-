@@ -18,9 +18,8 @@ namespace Ex03.GarageLogic
             m_doors = i_numDoors;
             
         }
-        if(m_Wheels.Count == 0){
-            AddWheels(4, "Michelin", 31, 31);
-        }
+        
+        
         
     }
 
