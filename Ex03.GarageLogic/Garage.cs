@@ -188,6 +188,7 @@ namespace Ex03.GarageLogic
                     Console.WriteLine("Please enter a valid remaining fuel liters value:");
                     remainingFuelLiters = float.Parse(Console.ReadLine());
                 }
+
                 return remainingFuelLiters;
             }
         }
@@ -196,10 +197,11 @@ namespace Ex03.GarageLogic
         {
             try
             {
-                if(remainingEngineTime < 0 || remainingEngineTime > 25)
+                if(remainingEngineTime < 0 || remainingEngineTime > 2.5f)
                 {
                     throw new ArgumentException("\nRemaining engine time must be a positive value, and below the maximum");
                 }
+
                 return remainingEngineTime;
             }
             catch (ArgumentException e)
@@ -210,8 +212,55 @@ namespace Ex03.GarageLogic
                     Console.WriteLine("Please enter a valid remaining engine time value:");
                     remainingEngineTime = float.Parse(Console.ReadLine());
                 }
+
                 return remainingEngineTime;
             }
+        }
+
+        public LicenseType validateLicenseType(string licenseType)
+        {
+            try
+            {
+                LicenseType license = (LicenseType)Enum.Parse(typeof(LicenseType), licenseType);
+                if (license != LicenseType.A && license != LicenseType.A1 && license != LicenseType.A2 && license != LicenseType.B)
+                {
+                    throw new ArgumentException("\nInvalid license type.");
+                }
+                return license;
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                bool validLicense = false;
+                while (validLicense == false)
+                {
+                    Console.WriteLine("Please enter a valid license type: (A, A1, A2, B)");
+                    licenseType = Console.ReadLine().ToUpper();
+                    if(licenseType == "A" || licenseType == "A1" || licenseType == "A2" || licenseType == "B"){
+                        validLicense = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid license type.");
+                    }
+                    
+                }
+                return (LicenseType)Enum.Parse(typeof(LicenseType), licenseType);
+            }
+        }
+        
+        public float validateEngingeSize(string engineSize)
+        {
+           if (engineSize.Any(char.IsLetter) || int.Parse(engineSize) < 0)
+           {
+               Console.WriteLine("Engine size must be a positive value.");
+               while (engineSize.Any(char.IsLetter) || int.Parse(engineSize) < 0)
+               {
+                   Console.WriteLine("Please enter a valid engine size:");
+                   engineSize = Console.ReadLine();
+               }
+           }
+            return float.Parse(engineSize);
         }
     }
 }

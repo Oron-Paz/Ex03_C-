@@ -112,10 +112,10 @@ public class GarageUI
         if (option == "1")
         {
             // Create a new FuelCar
-            Console.WriteLine("What is the color of the car?");
+            Console.WriteLine("What is the color of the car?\n");
             string color = Console.ReadLine().ToLower();
             CarColor carColor = garage.validateCarColor(color);
-            Console.WriteLine("How many doors does the car have?");
+            Console.WriteLine("How many doors does the car have?\n");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
             garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss));
@@ -126,27 +126,27 @@ public class GarageUI
         else if (option == "2")
         {
             // Create a new ElectricCar
-            Console.WriteLine("What is the color of the car?");
+            Console.WriteLine("\nWhat is the color of the car?");
             string color = Console.ReadLine().ToLower();
             CarColor carColor = garage.validateCarColor(color);
-            Console.WriteLine("How many doors does the car have?");
+            Console.WriteLine("\nHow many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
             
             garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss));
-            Console.WriteLine($"Electric car with license number {licenseNumber} was added to garage.");
+            Console.WriteLine($"\nElectric car with license number {licenseNumber} was added to garage.");
             return;
         }
         else if (option == "3")
         {
             // Create a new FuelMotorcycle
-            Console.WriteLine("What is the license type of the motorcycle?");
+            Console.WriteLine("\nWhat is the license type of the motorcycle?");
             LicenseType licenseType = (LicenseType)Enum.Parse(typeof(LicenseType), Console.ReadLine());
             if(licenseType != LicenseType.A && licenseType != LicenseType.A1 && licenseType != LicenseType.AA && licenseType != LicenseType.B1)
             {
                 throw new ArgumentException("\nInvalid license type.");
             }
-            Console.WriteLine("What is the engine volume of the motorcycle?");
+            Console.WriteLine("\nWhat is the engine volume of the motorcycle?");
             int engineVolume = int.Parse(Console.ReadLine());            
             garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
@@ -155,13 +155,13 @@ public class GarageUI
         else if (option == "4")
         {
             // Create a new ElectricMotorcycle
-            Console.WriteLine("What is the license type of the motorcycle?");
+            Console.WriteLine("\nWhat is the license type of the motorcycle?");
             LicenseType licenseType = (LicenseType)Enum.Parse(typeof(LicenseType), Console.ReadLine());
             if(licenseType != LicenseType.A && licenseType != LicenseType.A1 && licenseType != LicenseType.AA && licenseType != LicenseType.B1)
             {
                 throw new ArgumentException("\nInvalid license type.");
             }
-            Console.WriteLine("What is the engine volume of the motorcycle?");
+            Console.WriteLine("\nWhat is the engine volume of the motorcycle?");
             int engineVolume = int.Parse(Console.ReadLine());
             garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
@@ -170,13 +170,18 @@ public class GarageUI
         else if (option == "5")
         {
             // Create a new Truck
-            Console.WriteLine("Is the truck carrying dangerous materials? (yes/no)");
+            Console.WriteLine("\nIs the truck carrying dangerous materials? (yes/no)");
             bool isCarryingDangerousMaterials = Console.ReadLine().ToLower() == "yes";
-            Console.WriteLine("What is the cargo volume of the truck?");
+            Console.WriteLine("\nWhat is the cargo volume of the truck?");
             float cargoVolume = float.Parse(Console.ReadLine());
             if(cargoVolume < 0)
             {
-                Console.WriteLine("Invalid cargo volume.");
+                while(cargoVolume < 0)
+                {
+                    Console.WriteLine("\nInvalid cargo volume.");
+                    Console.WriteLine("Please enter a valid cargo volume:");
+                    cargoVolume = float.Parse(Console.ReadLine());
+                }
                 return;
             }
             garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume));
