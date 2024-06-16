@@ -107,81 +107,20 @@ public class GarageUI
         ownerPhoneNumber = garage.validatePhoneNumber(ownerPhoneNumber);
         Console.WriteLine("\nWhat is the remaining energy of the vehicle?");
         float remainingEnergy = float.Parse(Console.ReadLine());
-        try
-        {
-            if(remainingEnergy < 0 || remainingEnergy > 100)
-            {
-                throw new ArgumentException("\nRemaining energy must be a percent value between 0 and 100.");
-            }
-        }
-        catch (ArgumentException e)
-        {
-            Console.WriteLine(e.Message);
-            while(remainingEnergy < 0 || remainingEnergy > 100)
-            {
-                Console.WriteLine("\nPlease enter a valid remaining energy value:");
-                remainingEnergy = float.Parse(Console.ReadLine());
-            }
-        }
+        remainingEnergy = garage.validateRemainingEnergy(remainingEnergy);
         if (option == "1")
         {
             // Create a new FuelCar
             Console.WriteLine("What is the color of the car?");
             string color = Console.ReadLine().ToLower();
             CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
-            try
-            {
-                if (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
-                {
-                    throw new ArgumentException("\nInvalid car color.");
-                }
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-                while (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
-                {
-                    Console.WriteLine("\nPlease enter a valid car color: (Red, White, Yellow, Gray)");
-                    color = Console.ReadLine().ToLower();
-                    carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
-                }
-            }
+            carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
-            int doors = int.Parse(Console.ReadLine());
-            try
-            {
-                if(doors < 2 || doors > 5)
-                {
-                    throw new ArgumentException("\nNumber of doors must be between 2 and 5.");
-                }
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-                while(doors < 2 || doors > 5)
-                {
-                    Console.WriteLine("\nPlease enter a valid number of doors:");
-                    doors = int.Parse(Console.ReadLine());
-                }
-            }
+            int doors = Console.ReadLine();
+            doors = garage.validateDoors(doors);
             Console.WriteLine("What is the remaining fuel liters of the car?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
-            try
-            {
-                if(remainingFuelLiters < 0 || remainingFuelLiters > 45)
-                {
-                    throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 45 liters.");
-                }
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-                while(remainingFuelLiters < 0 || remainingFuelLiters > 45)
-                {
-                    Console.WriteLine("\nPlease enter a valid remaining fuel liters value:");
-                    remainingFuelLiters = float.Parse(Console.ReadLine());
-                }
-            }
+            remainingFuelLiters = garage.validateRemainingFuelLiters(remainingFuelLiters);
             garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingFuelLiters));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
             return;
@@ -192,23 +131,13 @@ public class GarageUI
             // Create a new ElectricCar
             Console.WriteLine("What is the color of the car?");
             string color = Console.ReadLine().ToLower();
-            CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
-            if (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
-            {
-                throw new ArgumentException("\nInvalid car color.");
-            }
+            color = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
             int doors = int.Parse(Console.ReadLine());
-            if(doors < 2 || doors > 5)
-            {
-                throw new ArgumentException("\nNumber of doors must be between 2 and 5.");
-            }
+            doorss = garage.validateDoors(doors);
             Console.WriteLine("What is the remaining engine time of the car?");
             float remainingEngineTime = float.Parse(Console.ReadLine());
-            if(remainingEngineTime < 0 || remainingEngineTime > 35)
-            {
-                throw new ArgumentException("\nRemaining engine time must be a positive value and under the maximum capacity of 35 hours.");
-            }
+            remainingEngineTime = garage.validateRemainingEnergy(remainingEngineTime)
             garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingEngineTime));
             Console.WriteLine($"Electric car with license number {licenseNumber} was added to garage.");
             return;
