@@ -29,7 +29,7 @@ namespace Ex03.GarageLogic
         public ElectricCar(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus i_vehicleStatus, CarColor i_carColor, int i_numDoors, float i_remainingEngineTime) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber, i_vehicleStatus, i_carColor, i_numDoors)
         {
             m_RemainingEngineTime = i_remainingEngineTime;
-            m_MaxEngineTime = 35;
+            m_MaxEngineTime = 3.5f;
     
         }
 
@@ -38,7 +38,7 @@ namespace Ex03.GarageLogic
             get { return  m_RemainingEngineTime; }
             set {  m_RemainingEngineTime = value;}
         }
-        float IElectricVehicle.m_MaxEngineTime => 35;
+        float IElectricVehicle.m_MaxEngineTime => 3.5f;
 
         public void Recharge(float minutes)
         {

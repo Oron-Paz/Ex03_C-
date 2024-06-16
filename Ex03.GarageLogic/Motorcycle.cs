@@ -23,12 +23,12 @@ namespace Ex03.GarageLogic
     public class ElectricMotorcycle : Motorcycle, IElectricVehicle
     {
         private float m_RemainingEngineTime;
-        private float m_MaxEngineTime = float(2.5);
+        private float m_MaxEngineTime = 2.5f;
 
         public ElectricMotorcycle(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus i_vehicleStatus, LicenseType i_licenseType, int i_engineVolume, float i_remainingEngineTime) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber, i_vehicleStatus, i_licenseType, i_engineVolume)
         {
             m_RemainingEngineTime = i_remainingEngineTime;
-            m_MaxEngineTime = 2;
+            m_MaxEngineTime = 2.5f;
         }
 
         float IElectricVehicle.m_RemainingEngineTime 
@@ -36,7 +36,7 @@ namespace Ex03.GarageLogic
             get { return m_RemainingEngineTime; }
             set { m_RemainingEngineTime = value; }
         }
-        float IElectricVehicle.m_MaxEngineTime => 25;
+        float IElectricVehicle.m_MaxEngineTime => 2.5f;
 
 
         public void Recharge(float i_minutes)
@@ -52,7 +52,7 @@ namespace Ex03.GarageLogic
     public class FuelMotorcycle : Motorcycle, IFuelVehicle
     {
         private float m_RemainingFuelLiters;
-        private float m_MaxAmountOfFuel = 55;
+        private float m_MaxAmountOfFuel = 5.5f;
         private FuelType m_FuelType = FuelType.Octane98;
 
         public FuelMotorcycle(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus i_vehicleStatus, LicenseType i_licenseType, int i_engineVolume, float i_remainingFuelLiters) : base(i_modelName, i_licenseNumber, i_remainingEnergy, i_ownerName, i_ownerPhoneNumber, i_vehicleStatus, i_licenseType, i_engineVolume)
@@ -66,7 +66,7 @@ namespace Ex03.GarageLogic
             set { m_RemainingFuelLiters = value; }
         }
 
-        float IFuelVehicle.m_MaxAmountOfFuel => 55;
+        float IFuelVehicle.m_MaxAmountOfFuel => 5.5f;
         FuelType IFuelVehicle.m_FuelType => m_FuelType;
 
         // Implementing the Refuel method
