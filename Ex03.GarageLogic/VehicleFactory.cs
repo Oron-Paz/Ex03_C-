@@ -25,21 +25,21 @@ namespace Ex03.GarageLogic
             return new ElectricCar(modelName, licenseNumber, remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, VehicleStatus.InRepair, color, doors, 0);
         }
 
-        public static FuelMotorcycle CreateFuelMotorcycle(string licenseNumber, string modelName, float remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters)
+        public static FuelMotorcycle CreateFuelMotorcycle(string modelName, string licenseNumber, float remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters)
         {
             
 
             return new FuelMotorcycle(modelName, licenseNumber, remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, licenseType, engineVolume, remainingFuelLiters);
         }
 
-        public static ElectricMotorcycle CreateElectricMotorcycle(string licenseNumber, string modelName, float remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingEngineTime)
+        public static ElectricMotorcycle CreateElectricMotorcycle(string modelName, string licenseNumber, float remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingEngineTime)
         {
             
             
             return new ElectricMotorcycle(modelName, licenseNumber, remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, vehicleStatus, licenseType, engineVolume, remainingEngineTime);
         }
 
-        public static Truck CreateTruck(string licenseNumber, string modelName, float remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, bool isCarryingDangerousMaterials, float cargoVolume, float i_RemainingFuelLiters)
+        public static Truck CreateTruck(string modelName, string licenseNumber, float remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, VehicleStatus vehicleStatus, bool isCarryingDangerousMaterials, float cargoVolume, float i_RemainingFuelLiters)
         {
             
             
