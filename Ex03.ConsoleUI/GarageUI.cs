@@ -119,7 +119,7 @@ public class GarageUI
             int doorss = garage.validateDoor(doors);
             Console.WriteLine("What is the remaining fuel liters of the car?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
-            remainingFuelLiters = garage.validateRemainingFuelLiters(remainingFuelLiters);
+            remainingFuelLiters = garage.validateRemainingFuelLitersCar(remainingFuelLiters);
             garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss, remainingFuelLiters));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
             return;
@@ -196,10 +196,7 @@ public class GarageUI
             }
             Console.WriteLine("What is the remaining fuel liters of the truck?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
-            if(remainingFuelLiters < 0 || remainingFuelLiters > 120)
-            {
-                throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 120 liters.");
-            }
+            remainingFuelLiters = garage.validateRemainingFuelLitersTruck(remainingFuelLiters);
             garage.vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume, remainingFuelLiters));
         }
         else

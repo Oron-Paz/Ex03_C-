@@ -151,12 +151,32 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public float validateRemainingFuelLiters(float remainingFuelLiters){
+        public float validateRemainingFuelLitersCar(float remainingFuelLiters){
             try
             {
-                if(remainingFuelLiters < 0)
+                if(remainingFuelLiters < 0 || remainingFuelLiters > 45)
                 {
-                    throw new ArgumentException("\nRemaining fuel liters must be a positive value.");
+                    throw new ArgumentException("\nRemaining fuel liters must be a positive value, and under the maximum value of 45 liters.");
+                }
+                return remainingFuelLiters;
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                while(remainingFuelLiters < 0)
+                {
+                    Console.WriteLine("Please enter a valid remaining fuel liters value:");
+                    remainingFuelLiters = float.Parse(Console.ReadLine());
+                }
+                return remainingFuelLiters;
+            }
+        }
+        public float validateRemainingFuelLitersTruck(float remainingFuelLiters){
+            try
+            {
+                if(remainingFuelLiters < 0 || remainingFuelLiters > 120)
+                {
+                    throw new ArgumentException("\nRemaining fuel liters must be a positive value, and under the maximum value of 120 liters.");
                 }
                 return remainingFuelLiters;
             }
