@@ -101,10 +101,10 @@ public class GarageUI
         string modelName = Console.ReadLine();
         Console.WriteLine("\nWhat is the owner name of the vehicle?");
         string ownerName = Console.ReadLine();
-        ownerName = validateName(ownerName);
+        ownerName = garage.validateName(ownerName);
         Console.WriteLine("\nWhat is the owner phone number of the vehicle?");
         string ownerPhoneNumber = Console.ReadLine();
-        ownerPhoneNumber = validatePhoneNumber(ownerPhoneNumber);
+        ownerPhoneNumber = garage.validatePhoneNumber(ownerPhoneNumber);
         Console.WriteLine("\nWhat is the remaining energy of the vehicle?");
         float remainingEnergy = float.Parse(Console.ReadLine());
         try
