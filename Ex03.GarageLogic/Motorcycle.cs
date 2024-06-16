@@ -12,12 +12,11 @@ namespace Ex03.GarageLogic
         public LicenseType LicenseType { get; set; }
         public int EngineVolume { get; set; }
 
-        public Motorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume) : base(modelName, licenseNumber, remainingEnergy, i_ownerName, i_ownerPhoneNumber)
+        public Motorcycle(string modelName, string licenseNumber, float remainingEnergy, string i_ownerName, string i_ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume) : base(modelName, licenseNumber, remainingEnergy, i_ownerName, i_ownerPhoneNumber)
         {
             LicenseType = licenseType;
             EngineVolume = engineVolume;
-            wheels.Add(new Wheel("Michelin", 33, 33));
-            wheels.Add(new Wheel("Michelin", 33, 33));
+            InitializeWheels(2, "Michelin", 33, 33);
         }
     }
 
@@ -26,7 +25,7 @@ namespace Ex03.GarageLogic
         private float m_RemainingEngineTime;
         private float m_MaxEngineTime = 25;
 
-        public ElectricMotorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingEngineTime) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
+        public ElectricMotorcycle(string modelName, string licenseNumber, float remainingEnergy, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingEngineTime) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
         {
             m_RemainingEngineTime = remainingEngineTime;
             m_MaxEngineTime = 2;
@@ -56,7 +55,7 @@ namespace Ex03.GarageLogic
         private float m_MaxAmountOfFuel = 55;
         private FuelType m_FuelType = FuelType.Octane98;
 
-        public FuelMotorcycle(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, wheels, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
+        public FuelMotorcycle(string modelName, string licenseNumber, float remainingEnergy, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, LicenseType licenseType, int engineVolume, float remainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, vehicleStatus, licenseType, engineVolume)
         {
             m_RemainingFuelLiters = remainingFuelLiters;
         }

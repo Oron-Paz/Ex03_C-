@@ -16,23 +16,14 @@ namespace Ex03.GarageLogic
         private float m_RemainingFuelLiters;
 
 
-        public Truck(string modelName, string licenseNumber, float remainingEnergy, List<Wheel> wheels, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume, float i_RemainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
+        public Truck(string modelName, string licenseNumber, float remainingEnergy, string ownerName, string ownerPhoneNumber, VehicleStatus vehicleStatus, bool carryingHazardousMaterials, float cargoVolume, float i_RemainingFuelLiters) : base(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber)
         {
             m_CarryingHazardousMaterials = carryingHazardousMaterials;
             m_CargoVolume = cargoVolume;
             //m_FuelType = FuelType.Soler;
             m_RemainingFuelLiters = i_RemainingFuelLiters;
             m_MaxAmountOfFuel = 120;
-
-            wheels.Add(new Wheel("Michelin", 28, 28));
-            wheels.Add(new Wheel("Michelin", 28, 28));
-            wheels.Add(new Wheel("Michelin", 28, 28));
-            wheels.Add(new Wheel("Michelin", 28, 28));
-            wheels.Add(new Wheel("Michelin", 28, 28));
-            wheels.Add(new Wheel("Michelin", 28, 28));
-            wheels.Add(new Wheel("Michelin", 28, 28));
-            wheels.Add(new Wheel("Michelin", 28, 28));
-
+            InitializeWheels(12 , "Michelin", 28, 28);
         }
 
         float IFuelVehicle.m_RemainingFuelLiters 

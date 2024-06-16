@@ -18,7 +18,6 @@ namespace Ex03.GarageLogic
             m_doors = i_numDoors;
 
             InitializeWheels(4, "Michelin", 31, 31);
-            
         }
     }
 
