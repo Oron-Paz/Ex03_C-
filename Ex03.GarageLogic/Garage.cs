@@ -116,7 +116,7 @@ namespace Ex03.GarageLogic
                     Console.WriteLine("Please enter a valid car color: (Red, White, Yellow, Gray)");
                     color = Console.ReadLine().ToLower();
                     if(color == "red" || color == "white" || color == "yellow" || color == "gray"){
-                        CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
+                        //CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
                         validColor = true;
                     }
                     else
@@ -125,7 +125,7 @@ namespace Ex03.GarageLogic
                     }
                     
                 }
-                return carColor;
+                return (CarColor)Enum.Parse(typeof(CarColor), color);
             }
         }
 
