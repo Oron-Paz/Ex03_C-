@@ -111,7 +111,7 @@ namespace Ex03.GarageLogic
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
-                CarColor carColor = null;
+                CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
                 while (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
                 {
                     Console.WriteLine("Please enter a valid car color: (Red, White, Yellow, Gray)");
