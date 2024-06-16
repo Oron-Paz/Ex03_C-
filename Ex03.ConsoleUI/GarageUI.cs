@@ -141,13 +141,11 @@ public class GarageUI
         {
             // Create a new FuelMotorcycle
             Console.WriteLine("\nWhat is the license type of the motorcycle?");
-            LicenseType licenseType = (LicenseType)Enum.Parse(typeof(LicenseType), Console.ReadLine());
-            if(licenseType != LicenseType.A && licenseType != LicenseType.A1 && licenseType != LicenseType.AA && licenseType != LicenseType.B1)
-            {
-                throw new ArgumentException("\nInvalid license type.");
-            }
+            string licenseType = Console.ReadLine();
+            licenseType = garage.validateLicenseType(licenseType);
             Console.WriteLine("\nWhat is the engine volume of the motorcycle?");
-            int engineVolume = int.Parse(Console.ReadLine());            
+            string engineVolume = Console.ReadLine();
+            engineVolume = garage.validateEngineVolume(engineVolume);            
             garage.vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
             return;
@@ -156,13 +154,11 @@ public class GarageUI
         {
             // Create a new ElectricMotorcycle
             Console.WriteLine("\nWhat is the license type of the motorcycle?");
-            LicenseType licenseType = (LicenseType)Enum.Parse(typeof(LicenseType), Console.ReadLine());
-            if(licenseType != LicenseType.A && licenseType != LicenseType.A1 && licenseType != LicenseType.AA && licenseType != LicenseType.B1)
-            {
-                throw new ArgumentException("\nInvalid license type.");
-            }
+            LicenseType licenseType = Console.ReadLine();
+            licenseType = garage.validateLicenseType(licenseType);
             Console.WriteLine("\nWhat is the engine volume of the motorcycle?");
-            int engineVolume = int.Parse(Console.ReadLine());
+            string engineVolume = Console.ReadLine();
+            engineVolume = garage.validateEngineVolume(engineVolume);
             garage.vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, licenseType, engineVolume));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
             return;
