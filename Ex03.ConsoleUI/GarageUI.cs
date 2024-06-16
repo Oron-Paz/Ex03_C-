@@ -113,8 +113,7 @@ public class GarageUI
             // Create a new FuelCar
             Console.WriteLine("What is the color of the car?");
             string color = Console.ReadLine().ToLower();
-            CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
-            carColor = garage.validateCarColor(color);
+            CarColor carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
@@ -131,8 +130,7 @@ public class GarageUI
             // Create a new ElectricCar
             Console.WriteLine("What is the color of the car?");
             string color = Console.ReadLine().ToLower();
-            CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
-            carColor = garage.validateCarColor(color);
+            CarColor carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);

@@ -98,9 +98,10 @@ namespace Ex03.GarageLogic
 
         public CarColor validateCarColor(string color)
         {
-            CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
+            
             try
             {
+                CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
                 if (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
                 {
                     throw new ArgumentException("\nInvalid car color.");
