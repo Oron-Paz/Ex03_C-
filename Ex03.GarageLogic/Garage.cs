@@ -8,18 +8,18 @@ namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        public List<Vehicle> vehicles;
+        public List<Vehicle> m_vehicles;
 
         //initializes a new instance of the Garage class that is empty
         public Garage()
         {
-            vehicles = new List<Vehicle>();
+            m_vehicles = new List<Vehicle>();
         }
 
         //returns the vehicle with the given license number
         public Vehicle SearchVehicle(string i_LicenseNumber)
         {
-            foreach (Vehicle vehicle in vehicles)
+            foreach (Vehicle vehicle in m_vehicles)
             {
                 //Console.WriteLine(vehicle.LicenseNumber);
                 if (vehicle.LicenseNumber.Equals(i_LicenseNumber))
@@ -74,34 +74,36 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public float validateRemainingEnergy(float remainingEnergy)
+        public float validateRemainingEnergy(float i_remainingEnergy)
         {
             try
             {
-                if(remainingEnergy < 0 || remainingEnergy > 100)
+                if(i_remainingEnergy < 0 || i_remainingEnergy > 100)
                 {
                     throw new ArgumentException("\nRemaining energy must be a percent value between 0 and 100.");
                 }
-                return remainingEnergy;
+                
+                return i_remainingEnergy;
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
-                while(remainingEnergy < 0 || remainingEnergy > 100)
+                while(i_remainingEnergy < 0 || i_remainingEnergy > 100)
                 {
                     Console.WriteLine("Please enter a valid remaining energy value:");
-                    remainingEnergy = float.Parse(Console.ReadLine());
+                    i_remainingEnergy = float.Parse(Console.ReadLine());
                 }
-                return remainingEnergy;
+                
+                return i_remainingEnergy;
             }
         } 
 
-        public CarColor validateCarColor(string color)
+        public eCarColor validateCarColor(string i_color)
         {
             try
             {
-                CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
-                if (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
+                eCarColor carColor = (eCarColor)Enum.Parse(typeof(eCarColor), i_color);
+                if (carColor != eCarColor.red && carColor != eCarColor.white && carColor != eCarColor.yellow && carColor != eCarColor.gray)
                 {
                     throw new ArgumentException("\nInvalid car color.");
                 }
@@ -114,8 +116,8 @@ namespace Ex03.GarageLogic
                 while (validColor == false)
                 {
                     Console.WriteLine("Please enter a valid car color: (Red, White, Yellow, Gray)");
-                    color = Console.ReadLine().ToLower();
-                    if(color == "red" || color == "white" || color == "yellow" || color == "gray"){
+                    i_color = Console.ReadLine().ToLower();
+                    if(i_color == "red" || i_color == "white" || i_color == "yellow" || i_color == "gray"){
                         //CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
                         validColor = true;
                     }
@@ -125,92 +127,92 @@ namespace Ex03.GarageLogic
                     }
                     
                 }
-                return (CarColor)Enum.Parse(typeof(CarColor), color);
+                return (eCarColor)Enum.Parse(typeof(eCarColor), i_color);
             }
         }
 
-        public int validateDoor(string doors)
+        public int validateDoor(string i_doors)
         {
             try
             {
-                if (doors != "2" && doors != "3" && doors != "4" && doors != "5")
+                if (i_doors != "2" && i_doors != "3" && i_doors != "4" && i_doors != "5")
                 {
                     throw new ArgumentException("\nInvalid number of doors.");
                 }
-                return int.Parse(doors);
+                return int.Parse(i_doors);
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
-                while (doors != "2" && doors != "3" && doors != "4" && doors != "5")
+                while (i_doors != "2" && i_doors != "3" && i_doors != "4" && i_doors != "5")
                 {
                     Console.WriteLine("Please enter a valid number of doors: (2, 3, 4, 5)");
-                    doors = Console.ReadLine();
+                    i_doors = Console.ReadLine();
                 }
-                return int.Parse(doors);
+                return int.Parse(i_doors);
             }
         }
 
-        public float validateRemainingFuelLitersCar(float remainingFuelLiters){
+        public float validateRemainingFuelLitersCar(float i_remainingFuelLiters){
             try
             {
-                if(remainingFuelLiters < 0 || remainingFuelLiters > 45)
+                if(i_remainingFuelLiters < 0 || i_remainingFuelLiters > 45)
                 {
                     throw new ArgumentException("\nRemaining fuel liters must be a positive value, and under the maximum value of 45 liters.");
                 }
-                return remainingFuelLiters;
+                return i_remainingFuelLiters;
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
-                while(remainingFuelLiters < 0 || remainingFuelLiters > 45)
+                while(i_remainingFuelLiters < 0 || i_remainingFuelLiters > 45)
                 {
                     Console.WriteLine("Please enter a valid remaining fuel liters value:");
-                    remainingFuelLiters = float.Parse(Console.ReadLine());
+                    i_remainingFuelLiters = float.Parse(Console.ReadLine());
                 }
-                return remainingFuelLiters;
+                return i_remainingFuelLiters;
             }
         }
-        public float validateRemainingFuelLitersTruck(float remainingFuelLiters){
+        public float validateRemainingFuelLitersTruck(float i_remainingFuelLiters){
             try
             {
-                if(remainingFuelLiters < 0 || remainingFuelLiters > 120)
+                if(i_remainingFuelLiters < 0 || i_remainingFuelLiters > 120)
                 {
                     throw new ArgumentException("\nRemaining fuel liters must be a positive value, and under the maximum value of 120 liters.");
                 }
-                return remainingFuelLiters;
+                return i_remainingFuelLiters;
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
-                while(remainingFuelLiters < 0 || remainingFuelLiters > 120)
+                while(i_remainingFuelLiters < 0 || i_remainingFuelLiters > 120)
                 {
                     Console.WriteLine("Please enter a valid remaining fuel liters value:");
-                    remainingFuelLiters = float.Parse(Console.ReadLine());
+                    i_remainingFuelLiters = float.Parse(Console.ReadLine());
                 }
-                return remainingFuelLiters;
+                return i_remainingFuelLiters;
             }
         }
 
-        public float validateRemainingEngineTime(float remainingEngineTime)
+        public float validateRemainingEngineTime(float i_remainingEngineTime)
         {
             try
             {
-                if(remainingEngineTime < 0 || remainingEngineTime > 25)
+                if(i_remainingEngineTime < 0 || i_remainingEngineTime > 25)
                 {
                     throw new ArgumentException("\nRemaining engine time must be a positive value, and below the maximum");
                 }
-                return remainingEngineTime;
+                return i_remainingEngineTime;
             }
             catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
-                while(remainingEngineTime < 0)
+                while(i_remainingEngineTime < 0)
                 {
                     Console.WriteLine("Please enter a valid remaining engine time value:");
-                    remainingEngineTime = float.Parse(Console.ReadLine());
+                    i_remainingEngineTime = float.Parse(Console.ReadLine());
                 }
-                return remainingEngineTime;
+                return i_remainingEngineTime;
             }
         }
     }
