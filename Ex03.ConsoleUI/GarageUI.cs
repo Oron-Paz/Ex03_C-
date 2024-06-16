@@ -117,11 +117,12 @@ public class GarageUI
             carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
-            doors = garage.validateDoors(doors);
+            doors = garage.validateDoor(doors);
+            int doorss = int.Parse(doors);
             Console.WriteLine("What is the remaining fuel liters of the car?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
             remainingFuelLiters = garage.validateRemainingFuelLiters(remainingFuelLiters);
-            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingFuelLiters));
+            garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss, remainingFuelLiters));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
             return;
 
@@ -131,14 +132,16 @@ public class GarageUI
             // Create a new ElectricCar
             Console.WriteLine("What is the color of the car?");
             string color = Console.ReadLine().ToLower();
-            color = garage.validateCarColor(color);
+            CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
+            carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
-            doorss = garage.validateDoor(doors);
+            doors = garage.validateDoor(doors);
+            int doorss = int.Parse(doors);
             Console.WriteLine("What is the remaining engine time of the car?");
             float remainingEngineTime = float.Parse(Console.ReadLine());
             remainingEngineTime = garage.validateRemainingEnergy(remainingEngineTime);
-            garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingEngineTime));
+            garage.vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doorss, remainingEngineTime));
             Console.WriteLine($"Electric car with license number {licenseNumber} was added to garage.");
             return;
         }
@@ -326,7 +329,7 @@ public class GarageUI
             }
             Console.WriteLine("Please enter the amount of fuel to refuel:");
             float amount = float.Parse(Console.ReadLine());
-            ((IFuelVehicle)vehicle).Refuel(((IFuelVehicle)vehicle).m_RemainingFuelLiters, ((IFuelVehicle)vehicle).m_MaxAmountOfFuel, amount, fuelType);
+            ((IFuelVehicle)vehicle).Refuel(((IFuelVehicle)vehicle).m_RemainingFuelLiters, amount, fuelType);
             return;
         }
         else
