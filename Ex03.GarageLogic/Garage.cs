@@ -29,5 +29,60 @@ namespace Ex03.GarageLogic
             }
             return null;
         }
+
+        public void ValidateColor(string i_Color)
+        {
+            try
+            {
+                Enum.Parse(typeof(eColor), i_Color);
+            }
+            catch (ArgumentException)
+            {
+                throw new ArgumentException("Invalid color (Color must be: Red, White, Yellow, Gray)");
+            }
+        }
+        public string validateName(string i_Name)
+        {
+            try
+            {
+                if(ownerName.Any(char.IsDigit))
+                {
+                    throw new ArgumentException("\nOwner name cannot contain digits.");
+                }
+                return ownerName;
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                while(ownerName.Any(char.IsDigit))
+                {
+                    Console.WriteLine("\nPlease enter a valid owner name:");
+                    ownerName = Console.ReadLine();
+                }
+                return ownerName;
+            }
+        }
+
+        public string validatePhoneNumber(string i_ownerPhoneNumber)
+        {
+            try
+            {
+                if(!i_ownerPhoneNumber.All(char.IsDigit))
+                {
+                    throw new ArgumentException("\nOwner phone number must be all digits.");
+                }
+                return i_ownerPhoneNumber;
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                while(i_ownerPhoneNumber.All(char.IsDigit) == false)
+                {
+                    Console.WriteLine("\nPlease enter a valid owner phone number:");
+                    i_ownerPhoneNumber = Console.ReadLine();
+                }
+                return i_ownerPhoneNumber;
+            }
+        }
     }
 }

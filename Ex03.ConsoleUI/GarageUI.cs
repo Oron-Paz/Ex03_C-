@@ -74,16 +74,23 @@ public class GarageUI
         Console.WriteLine("[4] Electric Motorcycle");
         Console.WriteLine("[5] Truck (Fuel)");
         string option = Console.ReadLine();
-        if(option != "1" && option != "2" && option != "3" && option != "4" && option != "5")
+        try{
+            if(option != "1" && option != "2" && option != "3" && option != "4" && option != "5")
+            {
+                throw new ArgumentException("\nInvalid option.");
+            }
+        }
+        catch (ArgumentException e)
         {
-            throw new ArgumentException("\nInvalid option.");
+            Console.WriteLine(e.Message);
+            while(option != "1" && option != "2" && option != "3" && option != "4" && option != "5")
+            {
+                Console.WriteLine("\nPlease select a valid option:");
+                option = Console.ReadLine();
+            }
         }
         Console.WriteLine("\nWhat is the license number of the vehicle?");
         string licenseNumber = Console.ReadLine();
-        if(licenseNumber.Contains(" "))
-        {
-            throw new ArgumentException("\nLicense number cannot contain spaces.");
-        }
         Vehicle vehicle = garage.SearchVehicle(licenseNumber);
         if (vehicle != null)
         {
@@ -94,34 +101,42 @@ public class GarageUI
         string modelName = Console.ReadLine();
         Console.WriteLine("\nWhat is the owner name of the vehicle?");
         string ownerName = Console.ReadLine();
+        validateName(ownerName);
+        Console.WriteLine("\nWhat is the owner phone number of the vehicle?");
+        string ownerPhoneNumber = Console.ReadLine();
         try
         {
-            if(ownerName.Any(char.IsDigit))
+            if(!ownerPhoneNumber.All(char.IsDigit))
             {
-                throw new ArgumentException("\nOwner name cannot contain digits.");
+                throw new ArgumentException("\nOwner phone number must be all digits.");
             }
         }
         catch (ArgumentException e)
         {
             Console.WriteLine(e.Message);
-            while(ownerName.Any(char.IsDigit))
+            while(ownerPhoneNumber.All(char.IsDigit) == false)
             {
-                Console.WriteLine("\nPlease enter a valid owner name:");
-                ownerName = Console.ReadLine();
+                Console.WriteLine("\nPlease enter a valid owner phone number:");
+                ownerPhoneNumber = Console.ReadLine();
             }
-            return;
-        }
-        Console.WriteLine("\nWhat is the owner phone number of the vehicle?");
-        string ownerPhoneNumber = Console.ReadLine();
-        if(!ownerPhoneNumber.All(char.IsDigit))
-        {
-            throw new ArgumentException("\nOwner phone number must be only digits.");
         }
         Console.WriteLine("\nWhat is the remaining energy of the vehicle?");
         float remainingEnergy = float.Parse(Console.ReadLine());
-        if(remainingEnergy < 0 || remainingEnergy > 100)
+        try
         {
-            throw new ArgumentException("\nRemaining energy must be a percent value between 0 and 100.");
+            if(remainingEnergy < 0 || remainingEnergy > 100)
+            {
+                throw new ArgumentException("\nRemaining energy must be a percent value between 0 and 100.");
+            }
+        }
+        catch (ArgumentException e)
+        {
+            Console.WriteLine(e.Message);
+            while(remainingEnergy < 0 || remainingEnergy > 100)
+            {
+                Console.WriteLine("\nPlease enter a valid remaining energy value:");
+                remainingEnergy = float.Parse(Console.ReadLine());
+            }
         }
         if (option == "1")
         {
@@ -129,21 +144,58 @@ public class GarageUI
             Console.WriteLine("What is the color of the car?");
             string color = Console.ReadLine().ToLower();
             CarColor carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
-            if (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
+            try
             {
-                throw new ArgumentException("\nInvalid car color.");
+                if (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
+                {
+                    throw new ArgumentException("\nInvalid car color.");
+                }
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                while (carColor != CarColor.red && carColor != CarColor.white && carColor != CarColor.yellow && carColor != CarColor.gray)
+                {
+                    Console.WriteLine("\nPlease enter a valid car color: (Red, White, Yellow, Gray)");
+                    color = Console.ReadLine().ToLower();
+                    carColor = (CarColor)Enum.Parse(typeof(CarColor), color);
+                }
             }
             Console.WriteLine("How many doors does the car have?");
             int doors = int.Parse(Console.ReadLine());
-            if(doors < 2 || doors > 5)
+            try
             {
-                throw new ArgumentException("\nNumber of doors must be between 2 and 5.");
+                if(doors < 2 || doors > 5)
+                {
+                    throw new ArgumentException("\nNumber of doors must be between 2 and 5.");
+                }
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                while(doors < 2 || doors > 5)
+                {
+                    Console.WriteLine("\nPlease enter a valid number of doors:");
+                    doors = int.Parse(Console.ReadLine());
+                }
             }
             Console.WriteLine("What is the remaining fuel liters of the car?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
-            if(remainingFuelLiters < 0 || remainingFuelLiters > 45)
+            try
             {
-                throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 45 liters.");
+                if(remainingFuelLiters < 0 || remainingFuelLiters > 45)
+                {
+                    throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 45 liters.");
+                }
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                while(remainingFuelLiters < 0 || remainingFuelLiters > 45)
+                {
+                    Console.WriteLine("\nPlease enter a valid remaining fuel liters value:");
+                    remainingFuelLiters = float.Parse(Console.ReadLine());
+                }
             }
             garage.vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, VehicleStatus.InRepair, carColor, doors, remainingFuelLiters));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
