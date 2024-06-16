@@ -30,17 +30,6 @@ namespace Ex03.GarageLogic
             return null;
         }
 
-        public void ValidateColor(string i_Color)
-        {
-            try
-            {
-                Enum.Parse(typeof(eColor), i_Color);
-            }
-            catch (ArgumentException)
-            {
-                throw new ArgumentException("Invalid color (Color must be: Red, White, Yellow, Gray)");
-            }
-        }
         public string validateName(string i_Name)
         {
             try
