@@ -117,8 +117,7 @@ public class GarageUI
             carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
-            doors = garage.validateDoor(doors);
-            int doorss = int.Parse(doors);
+            int doorss = garage.validateDoor(doors);
             Console.WriteLine("What is the remaining fuel liters of the car?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
             remainingFuelLiters = garage.validateRemainingFuelLiters(remainingFuelLiters);
@@ -136,8 +135,7 @@ public class GarageUI
             carColor = garage.validateCarColor(color);
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
-            doors = garage.validateDoor(doors);
-            int doorss = int.Parse(doors);
+            int doorss = garage.validateDoor(doors);
             Console.WriteLine("What is the remaining engine time of the car?");
             float remainingEngineTime = float.Parse(Console.ReadLine());
             remainingEngineTime = garage.validateRemainingEnergy(remainingEngineTime);
