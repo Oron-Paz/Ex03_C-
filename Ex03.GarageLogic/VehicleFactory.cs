@@ -42,9 +42,9 @@ namespace Ex03.GarageLogic
 
         public static Truck CreateTruck(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, eVehicleStatus i_vehicleStatus, bool i_isCarryingDangerousMaterials, float i_cargoVolume, float i_RemainingFuelLiters)
         {
+            float remainingFuelLiters = i_remainingEnergy/100 * 120;
             
-            
-            return new Truck(i_modelName, i_licenseNumber, i_remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, i_vehicleStatus, i_isCarryingDangerousMaterials, i_cargoVolume, i_RemainingFuelLiters);
+            return new Truck(i_modelName, i_licenseNumber, i_remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, i_vehicleStatus, i_isCarryingDangerousMaterials, i_cargoVolume, remainingFuelLiters);
         }
     }
 }

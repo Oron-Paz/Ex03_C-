@@ -120,10 +120,7 @@ public class GarageUI
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
-            Console.WriteLine("What is the remaining fuel liters of the car?");
-            float remainingFuelLiters = float.Parse(Console.ReadLine());
-            remainingFuelLiters = garage.validateRemainingFuelLitersCar(remainingFuelLiters);
-            garage.m_vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, carColor, doorss, remainingFuelLiters));
+            garage.m_vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, carColor, doorss, 0));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
 
             return;
@@ -138,10 +135,7 @@ public class GarageUI
             Console.WriteLine("How many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
-            Console.WriteLine("What is the remaining engine time of the car?");
-            float remainingEngineTime = float.Parse(Console.ReadLine());
-            remainingEngineTime = garage.validateRemainingEnergy(remainingEngineTime);
-            garage.m_vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, carColor, doorss, remainingEngineTime));
+            garage.m_vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, carColor, doorss, 0));
             Console.WriteLine($"Electric car with license number {licenseNumber} was added to garage.");
 
             return;
@@ -192,10 +186,7 @@ public class GarageUI
 
                 return;
             }
-            Console.WriteLine("What is the remaining fuel liters of the truck?");
-            float remainingFuelLiters = float.Parse(Console.ReadLine());
-            remainingFuelLiters = garage.validateRemainingFuelLitersTruck(remainingFuelLiters);
-            garage.m_vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume, remainingFuelLiters));
+            garage.m_vehicles.Add(VehicleFactory.CreateTruck(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, isCarryingDangerousMaterials, cargoVolume, 0));
         }
         else
         {
