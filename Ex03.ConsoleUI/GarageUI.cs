@@ -114,7 +114,7 @@ public class GarageUI
         if (option == "1")
         {
             // Create a new FuelCar
-            Console.WriteLine("\nWhat is the color of the car?\n");
+            Console.WriteLine("\nWhat is the color of the car?");
             string color = Console.ReadLine().ToLower();
             eCarColor carColor = garage.validateCarColor(color);
             Console.WriteLine("\nHow many doors does the car have?");
@@ -345,7 +345,7 @@ public class GarageUI
         }
         if(vehicle is IElectricVehicle)
         {
-            Console.WriteLine("Please enter the amount of minutes to charge:");
+            Console.WriteLine("Please enter the amount of hours to charge:");
             float minutes = float.Parse(Console.ReadLine());
             ((IElectricVehicle)vehicle).Recharge(minutes);
             Console.WriteLine("\nVehicle charged successfully.");

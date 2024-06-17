@@ -53,7 +53,12 @@ namespace Ex03.GarageLogic
                     Console.WriteLine($"The amount of hours currently is{m_RemainingEngineTime} and the amount of hours you want to add is {i_hours}");
                     Console.WriteLine("The amount of hours exceeds the maximum recharge time of 3.5 hours.");
                     Console.WriteLine("Please enter a valid amount of hours to add:");
-                    i_hours = float.Parse(Console.ReadLine());
+                    string hoursString = Console.ReadLine();
+                    if(!float.TryParse(hoursString, out i_hours))
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid amount of hours to add:");
+                        continue;
+                    }
                 }
                 m_RemainingEngineTime += i_hours;
                 
