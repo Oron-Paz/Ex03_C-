@@ -18,14 +18,14 @@ public class GarageUI
         {
             Console.Clear();
             Console.WriteLine("Garage Management System");
-            Console.WriteLine("1. Insert a new vehicle");
-            Console.WriteLine("2. Display vehicle license numbers");
-            Console.WriteLine("3. Change vehicle status");
-            Console.WriteLine("4. Inflate tires to maximum");
-            Console.WriteLine("5. Refuel a vehicle");
-            Console.WriteLine("6. Charge a vehicle");
-            Console.WriteLine("7. Display vehicle information");
-            Console.WriteLine("8. Exit");
+            Console.WriteLine("[1] Insert a new vehicle");
+            Console.WriteLine("[2] Display vehicle license numbers");
+            Console.WriteLine("[3] Change vehicle status");
+            Console.WriteLine("[4] Inflate tires to maximum");
+            Console.WriteLine("[5] Refuel a vehicle");
+            Console.WriteLine("[6] Charge a vehicle");
+            Console.WriteLine("[7] Display vehicle information");
+            Console.WriteLine("[8] Exit");
             Console.Write("Select an option: ");
             string option = Console.ReadLine();
             switch (option)
@@ -202,11 +202,12 @@ public class GarageUI
         Console.WriteLine("[2] Display vehicles by status");
 
         string option = Console.ReadLine();
+        Console.WriteLine("\n========Current Vehicles========\n");
         if(option == "1")
         {
             foreach (Vehicle vehicle in garage.m_vehicles)
             {
-                Console.WriteLine(vehicle.LicenseNumber + "\n");
+                Console.WriteLine("License: "vehicle.LicenseNumber);
             }
         }
         else if(option == "2")
@@ -216,6 +217,8 @@ public class GarageUI
             Console.WriteLine("[2] Repaired");
             Console.WriteLine("[3] Paid");
             string option2 = Console.ReadLine();
+
+            Console.WriteLine("\n========Vehicles by Status========\n");
             if (int.TryParse(option2, out int statusNumber) && statusNumber >= 1 && statusNumber <= 3)
             {
                 eVehicleStatus status = (eVehicleStatus)(statusNumber - 1);
@@ -223,7 +226,7 @@ public class GarageUI
                 {
                     if(vehicle.m_Status == status)
                     {
-                        Console.WriteLine("\n" + vehicle.LicenseNumber);
+                        Console.WriteLine("\n License: " + vehicle.LicenseNumber);
                     }
                 }
             }
@@ -234,7 +237,7 @@ public class GarageUI
         }
         else
         {
-            Console.WriteLine("Invalid option, try again.");
+            Console.WriteLine("Invalid option, please enter 1 or 2 again.");
         }
 
     }
@@ -261,6 +264,7 @@ public class GarageUI
         {
             eVehicleStatus status = (eVehicleStatus)(statusNumber - 1);
             vehicle.m_Status = status;
+            Console.WriteLine("\nVehicle status updated.\n");
         }
         else
         {
@@ -284,7 +288,7 @@ public class GarageUI
         {
             wheel.m_CurrentPressure = wheel.m_MaxAirRecomended;
         }
-        Console.WriteLine("Tires inflated to maximum.\n");
+        Console.WriteLine("\nTires inflated to maximum.");
     }
 
     private static void RefuelVehicle()
@@ -313,9 +317,10 @@ public class GarageUI
 
                 return;
             }
-            Console.WriteLine("Please enter the amount of fuel to refuel:");
+            Console.WriteLine("\nPlease enter the amount of fuel to refuel:");
             float amount = float.Parse(Console.ReadLine());
             ((IFuelVehicle)vehicle).Refuel(((IFuelVehicle)vehicle).m_RemainingFuelLiters, amount, fuelType);
+            Console.WriteLine("\nVehicle refueled successfully.");
             return;
         }
         else
@@ -343,6 +348,7 @@ public class GarageUI
             Console.WriteLine("Please enter the amount of minutes to charge:");
             float minutes = float.Parse(Console.ReadLine());
             ((IElectricVehicle)vehicle).Recharge(minutes);
+            Console.WriteLine("\nVehicle charged successfully.");
 
             return;
         }
