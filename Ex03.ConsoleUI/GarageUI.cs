@@ -114,10 +114,10 @@ public class GarageUI
         if (option == "1")
         {
             // Create a new FuelCar
-            Console.WriteLine("What is the color of the car?\n");
+            Console.WriteLine("\nWhat is the color of the car?\n");
             string color = Console.ReadLine().ToLower();
             eCarColor carColor = garage.validateCarColor(color);
-            Console.WriteLine("How many doors does the car have?");
+            Console.WriteLine("\nHow many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
             garage.m_vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, carColor, doorss, 0));
@@ -132,7 +132,7 @@ public class GarageUI
             Console.WriteLine("\nWhat is the color of the car?");
             string color = Console.ReadLine().ToLower();
             eCarColor carColor = garage.validateCarColor(color);
-            Console.WriteLine("How many doors does the car have?");
+            Console.WriteLine("\nHow many doors does the car have?");
             string doors = Console.ReadLine();
             int doorss = garage.validateDoor(doors);
             garage.m_vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, carColor, doorss, 0));
@@ -143,10 +143,10 @@ public class GarageUI
         else if (option == "3")
         {
             // Create a new FuelMotorcycle
-            Console.WriteLine("What is the license type of the motorcycle?");
+            Console.WriteLine("\nWhat is the license type of the motorcycle?");
             string licenseTypeString = Console.ReadLine();
             eLicenseType licenseType = garage.validateLicenseType(licenseTypeString);
-            Console.WriteLine("What is the engine volume of the motorcycle?");
+            Console.WriteLine("\nWhat is the engine volume of the motorcycle?");
             string engineVolumeString = Console.ReadLine();
             int engineVolume = garage.validateEngineVolume(engineVolumeString);
             garage.m_vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, licenseType, engineVolume, 0));
@@ -157,10 +157,10 @@ public class GarageUI
         else if (option == "4")
         {
             // Create a new ElectricMotorcycle
-            Console.WriteLine("What is the license type of the motorcycle?");
+            Console.WriteLine("\nWhat is the license type of the motorcycle?");
             string licenseTypeString = Console.ReadLine();
             eLicenseType licenseType = garage.validateLicenseType(licenseTypeString);
-            Console.WriteLine("What is the engine volume of the motorcycle?");
+            Console.WriteLine("\nWhat is the engine volume of the motorcycle?");
             string engineVolumeString = Console.ReadLine();
             int engineVolume = garage.validateEngineVolume(engineVolumeString);
             garage.m_vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, licenseType, engineVolume, 0));
