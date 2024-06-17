@@ -216,12 +216,12 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public LicenseType validateLicenseType(string licenseType)
+        public eLicenseType validateLicenseType(string licenseType)
         {
             try
             {
-                LicenseType license = (LicenseType)Enum.Parse(typeof(LicenseType), licenseType);
-                if (license != LicenseType.A && license != LicenseType.A1 && license != LicenseType.AA && license != LicenseType.B1)
+                eLicenseType license = (eLicenseType)Enum.Parse(typeof(eLicenseType), licenseType);
+                if (license != eLicenseType.A && license != eLicenseType.A1 && license != eLicenseType.AA && license != eLicenseType.B1)
                 {
                     throw new ArgumentException("\nInvalid license type.");
                 }
@@ -244,7 +244,7 @@ namespace Ex03.GarageLogic
                     }
                     
                 }
-                return (LicenseType)Enum.Parse(typeof(LicenseType), licenseType);
+                return (eLicenseType)Enum.Parse(typeof(eLicenseType), licenseType);
             }
         }
         
