@@ -343,7 +343,7 @@ public class GarageUI
         {
             Console.WriteLine("Vehicle not found.");
 
-            return;
+            return; 
         }
         if(vehicle is IElectricVehicle)
         {
