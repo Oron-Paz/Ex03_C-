@@ -202,9 +202,10 @@ public class GarageUI
         Console.WriteLine("[2] Display vehicles by status");
 
         string option = Console.ReadLine();
-        Console.WriteLine("\n========Current Vehicles========\n");
+        
         if(option == "1")
         {
+            Console.WriteLine("\n========Current Vehicles========\n");
             foreach (Vehicle vehicle in garage.m_vehicles)
             {
                 Console.WriteLine("License: " + vehicle.LicenseNumber);
@@ -218,9 +219,10 @@ public class GarageUI
             Console.WriteLine("[3] Paid");
             string option2 = Console.ReadLine();
 
-            Console.WriteLine("\n========Vehicles by Status========\n");
+            
             if (int.TryParse(option2, out int statusNumber) && statusNumber >= 1 && statusNumber <= 3)
             {
+                Console.WriteLine("\n========Vehicles by Status========\n");
                 eVehicleStatus status = (eVehicleStatus)(statusNumber - 1);
                 foreach (Vehicle vehicle in garage.m_vehicles)
                 {
