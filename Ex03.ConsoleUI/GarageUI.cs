@@ -65,6 +65,7 @@ public class GarageUI
             }
         } 
     }
+
     // Inserts a new vehicle into the garage.
     private static void InsertNewVehicle()
     {
@@ -96,6 +97,7 @@ public class GarageUI
         if (vehicle != null)
         {
             Console.WriteLine("\nVehicle already in the garage. what would you like to do?");
+
             return;
         }
         Console.WriteLine("\nWhat is the model name of the vehicle?");
@@ -123,6 +125,7 @@ public class GarageUI
             remainingFuelLiters = garage.validateRemainingFuelLitersCar(remainingFuelLiters);
             garage.m_vehicles.Add(VehicleFactory.CreateFuelCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, carColor, doorss, remainingFuelLiters));
             Console.WriteLine($"Fuel car with license number {licenseNumber} was added to garage.");
+
             return;
 
         }
@@ -140,19 +143,17 @@ public class GarageUI
             remainingEngineTime = garage.validateRemainingEnergy(remainingEngineTime);
             garage.m_vehicles.Add(VehicleFactory.CreateElectricCar(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, carColor, doorss, remainingEngineTime));
             Console.WriteLine($"Electric car with license number {licenseNumber} was added to garage.");
+
             return;
         }
         else if (option == "3")
         {
             // Create a new FuelMotorcycle
             Console.WriteLine("What is the license type of the motorcycle?");
-            eLicenseType licenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), Console.ReadLine());
-            if(licenseType != eLicenseType.A && licenseType != eLicenseType.A1 && licenseType != eLicenseType.AA && licenseType != eLicenseType.B1)
-            {
-                throw new ArgumentException("\nInvalid license type.");
-            }
-            Console.WriteLine("What is the engine volume of the motorcycle?");
-            int engineVolume = int.Parse(Console.ReadLine());
+            string licenseTypeString = Console.ReadLine();
+            eLicenseType licenseType = garage.validateLicenseType(licenseTypeString);
+            string engineVolumeString = Console.ReadLine();
+            int engineVolume = garage.validateEngineVolume(engineVolumeString);
             Console.WriteLine("What is the remaining fuel liters of the motorcycle?");
             float remainingFuelLiters = float.Parse(Console.ReadLine());
             // check if is the remaining fuel is appropiate.
@@ -162,19 +163,18 @@ public class GarageUI
             }
             garage.m_vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, licenseType, engineVolume, remainingFuelLiters));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
+
             return;
         }
         else if (option == "4")
         {
             // Create a new ElectricMotorcycle
             Console.WriteLine("What is the license type of the motorcycle?");
-            eLicenseType licenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), Console.ReadLine());
-            if(licenseType != eLicenseType.A && licenseType != eLicenseType.A1 && licenseType != eLicenseType.AA && licenseType != eLicenseType.B1)
-            {
-                throw new ArgumentException("\nInvalid license type.");
-            }
+            string licenseTypeString = Console.ReadLine();
+            eLicenseType licenseType = garage.validateLicenseType(licenseTypeString);
             Console.WriteLine("What is the engine volume of the motorcycle?");
-            int engineVolume = int.Parse(Console.ReadLine());
+            string engineVolumeString = Console.ReadLine();
+            int engineVolume = garage.validateEngineVolume(engineVolumeString);
             Console.WriteLine("What is the remaining engine time of the motorcycle?");
             float remainingEngineTime = float.Parse(Console.ReadLine());
             if(remainingEngineTime < 0 || remainingEngineTime > 25)
@@ -183,6 +183,7 @@ public class GarageUI
             }
             garage.m_vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, licenseType, engineVolume, remainingEngineTime));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
+
             return;
         }
         else if (option == "5")
@@ -200,6 +201,7 @@ public class GarageUI
                     Console.WriteLine("Please enter a valid cargo volume:");
                     cargoVolume = float.Parse(Console.ReadLine());
                 }
+
                 return;
             }
             Console.WriteLine("What is the remaining fuel liters of the truck?");
@@ -267,6 +269,7 @@ public class GarageUI
         if (vehicle == null)
         {
             Console.WriteLine("Vehicle not found.");
+
             return;
         }
         Console.WriteLine("Please enter the new status of the vehicle:");
@@ -295,6 +298,7 @@ public class GarageUI
         if (vehicle == null)
         {
             Console.WriteLine("Vehicle not found.");
+
             return;
         }
         foreach (Wheel wheel in vehicle.m_Wheels)
@@ -313,6 +317,7 @@ public class GarageUI
         if (vehicle == null)
         {
             Console.WriteLine("Vehicle not found.");
+
             return;
         }
         if(vehicle is IFuelVehicle)
@@ -326,6 +331,7 @@ public class GarageUI
             if(fuelType != ((IFuelVehicle)vehicle).m_FuelType)
             {
                 Console.WriteLine("Invalid fuel type.");
+
                 return;
             }
             Console.WriteLine("Please enter the amount of fuel to refuel:");
@@ -336,6 +342,7 @@ public class GarageUI
         else
         {
             Console.WriteLine("Vehicle is not a fuel vehicle.");
+
             return;
         }
     }
@@ -349,6 +356,7 @@ public class GarageUI
         if (vehicle == null)
         {
             Console.WriteLine("Vehicle not found.");
+
             return;
         }
         if(vehicle is IElectricVehicle)
@@ -356,11 +364,13 @@ public class GarageUI
             Console.WriteLine("Please enter the amount of minutes to charge:");
             float minutes = float.Parse(Console.ReadLine());
             ((IElectricVehicle)vehicle).Recharge(minutes);
+
             return;
         }
         else
         {
             Console.WriteLine("Vehicle is not an electric vehicle.");
+
             return;
         }
     }
@@ -374,6 +384,7 @@ public class GarageUI
         if (vehicle == null)
         {
             Console.WriteLine("Vehicle not found.");
+
             return;
         }
         Console.WriteLine("Vehicle Information: ============================");

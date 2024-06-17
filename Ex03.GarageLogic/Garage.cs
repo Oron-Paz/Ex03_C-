@@ -225,6 +225,7 @@ namespace Ex03.GarageLogic
                 {
                     throw new ArgumentException("\nInvalid license type.");
                 }
+
                 return license;
             }
             catch (ArgumentException e)
@@ -248,7 +249,7 @@ namespace Ex03.GarageLogic
             }
         }
         
-        public float validateEngineVolume(string engineSize)
+        public int validateEngineVolume(string engineSize)
         {
            if (engineSize.Any(char.IsLetter) || int.Parse(engineSize) < 0)
            {
@@ -259,7 +260,7 @@ namespace Ex03.GarageLogic
                    engineSize = Console.ReadLine();
                }
            }
-            return float.Parse(engineSize);
+            return int.Parse(engineSize);
         }
     }
 }
