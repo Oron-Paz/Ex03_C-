@@ -207,7 +207,7 @@ public class GarageUI
         {
             foreach (Vehicle vehicle in garage.m_vehicles)
             {
-                Console.WriteLine("License: "vehicle.LicenseNumber);
+                Console.WriteLine("License: " + vehicle.LicenseNumber);
             }
         }
         else if(option == "2")
