@@ -152,16 +152,10 @@ public class GarageUI
             Console.WriteLine("What is the license type of the motorcycle?");
             string licenseTypeString = Console.ReadLine();
             eLicenseType licenseType = garage.validateLicenseType(licenseTypeString);
+            Console.WriteLine("What is the engine volume of the motorcycle?");
             string engineVolumeString = Console.ReadLine();
             int engineVolume = garage.validateEngineVolume(engineVolumeString);
-            Console.WriteLine("What is the remaining fuel liters of the motorcycle?");
-            float remainingFuelLiters = float.Parse(Console.ReadLine());
-            // check if is the remaining fuel is appropiate.
-            if(remainingFuelLiters < 0 || remainingFuelLiters > 55)
-            {
-                throw new ArgumentException("\nRemaining fuel liters must be a positive value and under the maximum capacity of 55 liters.");
-            }
-            garage.m_vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, licenseType, engineVolume, remainingFuelLiters));
+            garage.m_vehicles.Add(VehicleFactory.CreateFuelMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, licenseType, engineVolume, 0));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
 
             return;
@@ -175,13 +169,7 @@ public class GarageUI
             Console.WriteLine("What is the engine volume of the motorcycle?");
             string engineVolumeString = Console.ReadLine();
             int engineVolume = garage.validateEngineVolume(engineVolumeString);
-            Console.WriteLine("What is the remaining engine time of the motorcycle?");
-            float remainingEngineTime = float.Parse(Console.ReadLine());
-            if(remainingEngineTime < 0 || remainingEngineTime > 25)
-            {
-                throw new ArgumentException("\nRemaining engine time must be a positive value and under the maximum capacity of 25 hours.");
-            }
-            garage.m_vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, licenseType, engineVolume, remainingEngineTime));
+            garage.m_vehicles.Add(VehicleFactory.CreateElectricMotorcycle(modelName, licenseNumber, remainingEnergy, ownerName, ownerPhoneNumber, eVehicleStatus.InRepair, licenseType, engineVolume, 0));
             Console.WriteLine($"\nFuel motorcycle with license number {licenseNumber} was added to garage.\n");
 
             return;
