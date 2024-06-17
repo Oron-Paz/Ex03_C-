@@ -27,8 +27,9 @@ namespace Ex03.GarageLogic
 
         public static FuelMotorcycle CreateFuelMotorcycle(string i_modelName, string i_licenseNumber, float i_remainingEnergy, string i_OwnerName, string i_OwnerPhoneNumber, eVehicleStatus i_vehicleStatus, eLicenseType i_licenseType, int i_engineVolume, float i_remainingFuelLiters)
         {
-            float remainingFuelLiters;
-            remainingFuelLiters = i_remainingEnergy/100 * 5.5f;
+            
+            float remainingFuelLiters = i_remainingEnergy/100 * 5.5f;
+            
             return new FuelMotorcycle(i_modelName, i_licenseNumber, i_remainingEnergy, i_OwnerName, i_OwnerPhoneNumber, i_vehicleStatus, i_licenseType, i_engineVolume, remainingFuelLiters);
         }
 
